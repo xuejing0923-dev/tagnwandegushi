@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="65 65 130 130" width="130" height="130">
+  <!-- 一角硬币：直径约 1.9 厘米 = 99（比 1 厘米长得多） -->
+  <defs>
+    <radialGradient id="coin" cx="36%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#F6F2EA"/>
+      <stop offset="55%" stop-color="#DCD5C8"/>
+      <stop offset="100%" stop-color="#B8AFA0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="134" cy="137" rx="50" ry="49" fill="rgba(74,58,54,.18)"/>
+  <circle cx="130" cy="130" r="49.5" fill="#C7BFB0"/>
+  <circle cx="130" cy="130" r="45" fill="url(#coin)"/>
+  <circle cx="130" cy="130" r="38" fill="none" stroke="rgba(120,110,95,.45)" stroke-width="1.6"/>
+  <!-- 简单示意菊花的放射花瓣 -->
+  <g stroke="rgba(120,110,95,.55)" stroke-width="1.4" fill="none">
+    <path d="M130 100 L130 116"/><path d="M130 144 L130 160"/>
+    <path d="M100 130 L116 130"/><path d="M144 130 L160 130"/>
+    <path d="M109 109 L120 120"/><path d="M140 140 L151 151"/>
+    <path d="M151 109 L140 120"/><path d="M120 140 L109 151"/>
+  </g>
+  <circle cx="130" cy="130" r="9" fill="none" stroke="rgba(120,110,95,.5)" stroke-width="1.4"/>
+  <ellipse cx="112" cy="112" rx="14" ry="9" transform="rotate(-35 112 112)"
+           fill="#FFFFFF" opacity=".5"/>
+</svg>

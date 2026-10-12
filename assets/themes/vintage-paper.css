@@ -1,0 +1,50 @@
+/* theme: vintage-paper — 旧纸·年代版
+ * 底色换成泛黄的旧纸，强调色从马卡龙换成砖红／陶土／旧金／旧橄榄。
+ * 变量名与 macaron 完全一致（--rose/--sage/--butter/--lilac/--mist + -d），
+ * 所以 style.css 里所有现成规则不用改，会自动跟着变旧。
+ * 每一页的底色变化在 style.css 第 7 节按 data-mood 覆盖。
+ */
+:root{
+  /* 纸 */
+  --bg:#F1E3C6;
+  --bg-soft:#EAD9B6;
+  --surface:#FBF4E2;
+  --surface-2:#F4E8CC;
+  --border:rgba(101,74,42,.20);
+  --border-strong:rgba(101,74,42,.40);
+
+  /* 墨 */
+  --text-1:#3A2E21;
+  --text-2:#6C5A41;
+  --text-3:#9C8A6C;
+
+  /* 强调色只做色块，配 --accent-ink 的浅字（对比约 4.9:1） */
+  --accent:#B75B3E;
+  --accent-ink:#FFF7EA;
+  --accent-2:#8A9B62;
+  --accent-3:#D3A54C;
+
+  /* 年代色板：浅色做底、深色的 -d 做文字 */
+  --rose:#C4754E;   --rose-d:#9C4B33;   /* 陶土／深砖红 */
+  --sage:#9DAB7C;   --sage-d:#5C6B44;   /* 旧橄榄 */
+  --butter:#DFC178; --butter-d:#8A6524; /* 旧金 */
+  --lilac:#B6A28C;  --lilac-d:#7A6650;  /* 旧紫褐 */
+  --mist:#A9B3AE;   --mist-d:#5B6660;   /* 旧蓝灰 */
+
+  --good:#7E9A62;
+  --warn:#C9954A;
+  --bad:#A94A3B;
+
+  --grad:linear-gradient(135deg,#C9805F,#B75B3E 50%,#8A6A4A);
+  --grad-soft:linear-gradient(135deg,#F8EDD3,#F1E2C0 55%,#EAD9B6);
+
+  /* 年代感：圆角收小、阴影偏褐 */
+  --radius:10px;
+  --radius-sm:8px;
+  --radius-lg:14px;
+  --shadow:0 8px 22px rgba(93,70,38,.10),0 1px 3px rgba(93,70,38,.08);
+  --shadow-lg:0 18px 40px rgba(93,70,38,.16);
+
+  --font-sans:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB',Helvetica,sans-serif;
+  --font-display:'Noto Serif SC','Songti SC','Playfair Display',Georgia,serif;
+}

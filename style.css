@@ -1,0 +1,870 @@
+/* ============================================================
+   《认识厘米 · 糖丸爷爷》课件专用样式
+   1 主题微调 / 2 通用元件 / 3 逐页版式 / 4 互动组件
+   ============================================================ */
+
+/* ---------- 1. 主题微调：accent 只做色块，文字一律用深色 ---------- */
+.kicker{color:var(--rose-d)}
+a{color:var(--rose-d)}
+.pill-accent{background:color-mix(in srgb,var(--rose) 20%,#fff);color:var(--rose-d);
+  border-color:color-mix(in srgb,var(--rose) 45%,#fff)}
+.divider-accent{background:var(--rose)}
+h1.title,.h1,h2.title,.h2{font-family:var(--font-display);letter-spacing:-.01em}
+h1.title,.h1{font-size:74px;font-weight:700;line-height:1.1}
+h2.title,.h2{font-size:50px;font-weight:700;line-height:1.14}
+h3,.h3{font-size:30px}
+.lede{font-size:24px;line-height:1.65;color:var(--text-2);font-weight:300}
+.slide{padding:64px 88px}
+.serif{font-family:var(--font-display)}
+
+/* 尺子刻度装饰带 —— 呼应“厘米”，也当页面分隔 */
+.ruler-band{height:16px;width:100%;position:relative;opacity:.85}
+.ruler-band::before{content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(to right,var(--border-strong) 0 1px,transparent 1px 40px),
+                   repeating-linear-gradient(to right,var(--border) 0 1px,transparent 1px 8px);
+  background-size:100% 16px,100% 7px;
+  background-position:bottom left,bottom left;
+  background-repeat:repeat-x,repeat-x}
+
+/* ---------- 2. 通用元件 ---------- */
+.tagline{font-size:15px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.big-q{font-family:var(--font-display);font-size:46px;line-height:1.3;font-weight:700}
+.note-line{font-size:18px;color:var(--text-3);letter-spacing:.04em}
+.hl{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--butter) 78%,#fff) 62%);padding:0 2px}
+.hl-rose{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--rose) 55%,#fff) 62%);padding:0 2px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;
+  font-size:19px;background:var(--surface);border:1px solid var(--border);color:var(--text-2)}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--rose)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:999px;border:none;
+  background:var(--rose);color:var(--accent-ink);font-size:20px;font-weight:600;
+  font-family:var(--font-sans);cursor:pointer;box-shadow:var(--shadow);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+/* 点击后跳出来的"结论"——要能在教室后排看清 */
+.verdict{display:inline-block;margin-top:16px;padding:10px 22px;border-radius:999px;
+  font-size:26px;font-weight:600;line-height:1.4}
+.verdict.bad{background:color-mix(in srgb,var(--bad) 16%,#fff);color:#963F3F}
+.verdict.good{background:color-mix(in srgb,var(--sage) 30%,#fff);color:var(--sage-d)}
+.js-reveal{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js-reveal.on{opacity:1;transform:none}
+.js-box{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js-box.on{opacity:1;transform:none}
+.hit{cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.hit:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.tap-hint{font-size:19px;color:var(--rose-d);letter-spacing:.06em}
+.tap-hint::after{content:" ●";font-size:11px;opacity:.7;animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:.85}}
+
+/* ---------- 3-a. 封面 ---------- */
+/* 注意：这里千万不能写 position:relative —— .slide 靠 position:absolute + inset:0
+   铺满画布，而 .cover 与 .slide 特异度相同，会把它顶掉，整页就会塌成内容高度。 */
+.cover{isolation:isolate}
+.cover .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;pointer-events:none}
+.cover .b1{width:640px;height:640px;background:var(--rose);right:-140px;top:-180px}
+.cover .b2{width:540px;height:540px;background:var(--mist);right:200px;bottom:-240px;opacity:.42}
+.cover .b3{width:400px;height:400px;background:var(--butter);left:-150px;bottom:-140px;opacity:.38}
+.cover-inner{position:relative;z-index:2;max-width:1180px}
+.cover h1{font-size:104px;line-height:1.06;margin:0 0 24px}
+.cover .sub{font-size:28px;color:var(--text-2);font-weight:300}
+.cover .meta{display:flex;gap:14px;margin-top:42px;flex-wrap:wrap}
+
+/* ---------- 3-b. 地图 / 人物 ---------- */
+.map-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;height:100%}
+.p18-photo{max-width:560px;margin:0 auto}
+.map-figure svg{width:100%;height:auto}
+.map-dot{animation:pulse 2.4s infinite;transform-origin:center}
+@keyframes pulse{0%{r:14;opacity:.85}70%{r:44;opacity:0}100%{r:44;opacity:0}}
+.map-label{font-family:var(--font-display);font-size:28px;fill:var(--rose-d)}
+.year-hero{font-family:var(--font-display);font-size:150px;line-height:.95;font-weight:700;color:var(--rose-d)}
+
+.person{display:grid;grid-template-columns:400px 1fr;gap:64px;align-items:center;height:100%}
+.portrait{position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  background:var(--grad-soft);border:1px solid var(--border)}
+.portrait svg{width:100%;height:auto;display:block}
+.portrait .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 16px;font-size:15px;
+  color:var(--text-2);background:rgba(255,255,255,.85)}
+.facts{display:grid;gap:12px;margin-top:26px}
+.fact{display:flex;gap:16px;align-items:baseline;font-size:21px;color:var(--text-2);
+  padding-bottom:12px;border-bottom:1px dashed var(--border)}
+.fact b{font-family:var(--font-display);color:var(--rose-d);font-size:24px;min-width:104px;font-weight:700}
+
+/* ---------- 3-c. 三选一 ---------- */
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+.choice{border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 28px;background:var(--surface);
+  box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+.choice .icon{height:110px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.choice h4{font-size:29px;margin:0 0 10px}
+.choice p{font-size:22px;color:var(--text-2);line-height:1.6;margin:0}
+.choice.picked{border-color:var(--rose);background:color-mix(in srgb,var(--rose) 10%,#fff)}
+.choice .stamp{position:absolute;top:14px;right:14px;font-size:16px;padding:5px 14px;border-radius:999px;
+  background:var(--rose);color:var(--accent-ink);opacity:0;transition:opacity .3s}
+.choice.picked .stamp{opacity:1}
+
+/* ---------- 3-d. 量法三步 ---------- */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+.step3{position:relative;padding:34px 28px 28px;border:1px solid var(--border);border-radius:var(--radius-lg);
+  background:var(--surface);box-shadow:var(--shadow)}
+.step3 .n{position:absolute;top:-26px;left:26px;width:52px;height:52px;border-radius:50%;
+  background:var(--rose);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:22px;box-shadow:var(--shadow)}
+.step3 h4{font-size:23px;margin:14px 0 8px}
+.step3 p{font-size:21px;color:var(--text-2);line-height:1.6;margin:0}
+
+/* ---------- 4-a. 拃：同一根棒，不同的数 ---------- */
+.span-widget{position:relative;margin-top:150px}
+.span-layer{position:absolute;inset:0;pointer-events:none}
+.span-stick{position:relative;height:26px;border-radius:13px;
+  background:linear-gradient(90deg,#E6D8CB,#D9C6B4);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.span-mark{position:absolute;top:-18px;bottom:-18px;width:8px;border-radius:4px;background:var(--lilac);
+  opacity:0;transition:opacity .3s var(--ease)}
+.span-mark.on{opacity:.95}
+.span-lab{position:absolute;top:-72px;font-size:18px;color:var(--lilac-d);opacity:0;
+  transform:translateX(-50%);transition:opacity .3s var(--ease)}
+.span-lab.on{opacity:1}
+.span-people{display:flex;gap:22px;margin-top:78px}
+.span-person{display:flex;align-items:center;gap:16px;padding:16px 26px;border-radius:var(--radius);
+  border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow);cursor:pointer}
+.span-person.active{border-color:var(--rose);background:color-mix(in srgb,var(--rose) 12%,#fff)}
+.span-person .who{font-size:21px;font-weight:600}
+.span-person .res{font-size:18px;color:var(--text-3);font-family:var(--font-display)}
+.conflict-stamp{display:inline-block;margin-top:34px;font-family:var(--font-display);font-size:36px;
+  color:var(--rose-d);opacity:0;transform:scale(.92);transition:.45s var(--ease)}
+.conflict-stamp.on{opacity:1;transform:none}
+
+/* ---------- 4-b. 尺子 ---------- */
+.ruler-box{margin-top:26px;padding:30px 34px;border-radius:var(--radius-lg);
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.ruler-svg{width:100%;height:auto;cursor:pointer}
+.ruler-seg{opacity:0;transition:opacity .25s var(--ease);fill:var(--butter)}
+.ruler-seg.on{opacity:1}
+/* pointer-events:none 很要紧：这些标注默认是透明的，但透明元素照样挡点击 ——
+   原来"厘米"那两个字就压在 cm 上面，把那一片的点击全吃掉了（点 cm 没反应的原因）。 */
+.seg-label{font-size:30px;font-family:var(--font-display);fill:var(--rose-d);opacity:0;
+  pointer-events:none;transition:opacity .3s}
+.seg-label.on{opacity:1}
+
+/* ---------- 4-c. 捏住 1 厘米 ---------- */
+.pinch{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;margin-top:6px}
+.pinch-stage{position:relative;height:340px;display:flex;align-items:center;justify-content:center}
+.stick-1cm{position:absolute;left:50%;top:50%;margin-left:-39px;margin-top:-12px;
+  width:78px;height:24px;border-radius:7px;background:var(--butter);
+  border:1px solid rgba(74,58,54,.28);z-index:3;
+  transition:transform 1s cubic-bezier(.34,1.3,.64,1),opacity .6s}
+.stick-1cm.out{transform:translateY(-190px) rotate(-16deg);opacity:0}
+.fingers{position:relative;z-index:2;height:180px;width:0}
+.finger-tip{position:absolute;top:0;width:38px;height:180px;border-radius:19px;background:#F2DFD5;
+  border:1px solid rgba(74,58,54,.18)}
+.finger-tip.l{left:-77px}
+.finger-tip.r{right:-77px}
+.gap-mark{position:absolute;left:50%;transform:translateX(-50%);top:0;height:180px;width:78px;
+  border-left:2px dashed var(--rose);border-right:2px dashed var(--rose);opacity:0;transition:opacity .6s .45s}
+.gap-mark.on{opacity:1}
+.gap-cap{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:21px;
+  color:var(--rose-d);white-space:nowrap;opacity:0;transition:opacity .6s .7s}
+.gap-cap.on{opacity:1}
+
+/* ---------- 4-d. 生活中的 1 厘米 ---------- */
+.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:30px}
+/* 用「正面淡出、背面淡入」代替 3D rotateY 翻转：
+   3D 翻转在打印/导出 PDF 的光栅化里不可靠，背面会以镜像文字露出来。 */
+.flip{position:relative;height:236px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%}
+.flip-f,.flip-b{position:absolute;inset:0;border-radius:var(--radius-lg);display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+  transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.flip-f{background:var(--surface)}
+.flip-b{background:var(--grad-soft);padding:20px;text-align:center;
+  opacity:0;transform:translateY(12px) scale(.97)}
+.flip.on .flip-f{opacity:0;transform:translateY(-12px) scale(.97)}
+.flip.on .flip-b{opacity:1;transform:none}
+.flip-f .q{font-family:var(--font-display);font-size:27px;color:var(--text-1)}
+.flip-f .hint{font-size:18px;color:var(--text-3)}
+.flip-b .a{font-size:24px;color:var(--text-1);line-height:1.5}
+
+/* ---------- 4-e. 拖尺子量糖丸 ---------- */
+.measure-stage{position:relative;height:420px;margin-top:22px;border-radius:var(--radius-lg);
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.meas-object{position:absolute;left:260px;top:126px;width:112px;height:112px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#fff,#F3E7DE 55%,#E2D1C6);
+  box-shadow:0 6px 16px rgba(74,58,54,.18),inset 0 -3px 8px rgba(74,58,54,.08);
+  border:1px solid rgba(74,58,54,.14)}
+.meas-obj-cap{position:absolute;left:260px;top:80px;width:112px;text-align:center;font-size:19px;color:var(--text-3)}
+.meas-ruler{position:absolute;left:60px;top:272px;cursor:grab;touch-action:none;
+  user-select:none;-webkit-user-select:none;will-change:transform}
+.meas-ruler.dragging{cursor:grabbing}
+.meas-hint{position:absolute;left:34px;top:26px;font-size:18px;color:var(--text-3)}
+.meas-result{position:absolute;right:40px;top:30px;text-align:right;opacity:0;transform:translateY(10px);
+  transition:.45s var(--ease)}
+.meas-result.on{opacity:1;transform:none}
+.meas-result .v{font-family:var(--font-display);font-size:58px;color:var(--rose-d);line-height:1}
+.meas-result .t{font-size:17px;color:var(--text-2)}
+.snap-line{position:absolute;left:260px;top:100px;width:2px;height:156px;background:var(--sage);opacity:0;
+  transition:opacity .3s}
+.snap-line.on{opacity:.9}
+
+/* ---------- 4-f. 和顾爷爷说句话 ---------- */
+.talk{display:grid;grid-template-columns:420px 1fr;gap:56px;height:100%;align-items:start}
+.talk-left{display:flex;flex-direction:column;gap:20px}
+.talk-asks{display:flex;flex-wrap:wrap;gap:12px}
+.ask{padding:18px 20px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);
+  flex:1 1 208px;
+  box-shadow:var(--shadow);cursor:pointer;font-size:20px;line-height:1.45;color:var(--text-1);
+  display:flex;gap:10px;align-items:flex-start}
+.ask .q{font-family:var(--font-display);color:var(--rose-d);font-size:22px;line-height:1.2}
+.ask.active{border-color:var(--rose);background:color-mix(in srgb,var(--rose) 12%,#fff)}
+.ask.done{opacity:.5}
+.talk-stage{display:flex;flex-direction:column;gap:16px;min-height:620px}
+.talk-right{display:flex;flex-direction:column;gap:16px;flex:1;min-width:0}
+.bubble{max-width:90%;padding:20px 26px;border-radius:var(--radius-lg);font-size:23px;line-height:1.6;
+  opacity:0;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.bubble.on{opacity:1;transform:none}
+.bubble.me{align-self:flex-end;background:var(--rose);color:var(--accent-ink);border-bottom-right-radius:6px}
+.bubble.gu{align-self:flex-start;background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--sage);box-shadow:var(--shadow);border-bottom-left-radius:6px;min-width:62%}
+.bubble.gu .who{display:block;font-size:15px;color:var(--sage-d);letter-spacing:.08em;margin-bottom:6px}
+.caret{display:inline-block;width:3px;height:24px;background:var(--sage-d);vertical-align:-3px;margin-left:3px;
+  animation:blink 1s steps(1) infinite}
+.talk-empty{color:var(--text-3);font-size:22px;font-family:var(--font-display)}
+.askme{margin-top:auto;display:flex;gap:14px;align-items:center;padding-top:18px}
+.askme input{flex:1;font-size:21px;padding:16px 24px;border-radius:999px;border:1px solid var(--border-strong);
+  background:var(--surface);font-family:var(--font-sans);color:var(--text-1);outline:none}
+.askme input:focus{border-color:var(--rose);box-shadow:0 0 0 4px color-mix(in srgb,var(--rose) 22%,#fff)}
+.askme button{font-size:20px;padding:16px 32px;border-radius:999px;border:none;cursor:pointer;
+  background:var(--rose);color:var(--accent-ink);font-weight:600;font-family:var(--font-sans)}
+.askme button:disabled{opacity:.45;cursor:default}
+
+/* ---------- 4-g. 时间轴 ---------- */
+.tl2{position:relative;margin-top:90px;padding-top:36px}
+.tl2::before{content:"";position:absolute;left:0;right:0;top:12px;height:2px;background:var(--border)}
+.tl2 .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.tl2 .node{cursor:pointer;text-align:center;position:relative;padding-top:46px}
+.tl2 .node .dot{position:absolute;top:-36px;left:50%;transform:translateX(-50%);width:26px;height:26px;
+  border-radius:50%;background:var(--surface);border:3px solid var(--border-strong);transition:.35s var(--ease)}
+.tl2 .node .yr{font-family:var(--font-display);font-size:26px;color:var(--text-3);transition:.3s;display:block}
+.tl2 .node .tx{font-size:20px;color:var(--text-2);line-height:1.5;margin-top:8px;display:block;
+  opacity:0;transform:translateY(8px);transition:.4s var(--ease)}
+.tl2 .node.on .dot{background:var(--rose);border-color:var(--rose);
+  box-shadow:0 0 0 6px color-mix(in srgb,var(--rose) 25%,#fff)}
+.tl2 .node.on .yr{color:var(--rose-d)}
+.tl2 .node.on .tx{opacity:1;transform:none}
+
+/* ---------- 4-h. 画线段 ---------- */
+.draw-stage{margin-top:28px;padding:52px 44px 40px;border-radius:var(--radius-lg);
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.draw-ruler{position:relative;height:120px;margin-left:8px}
+.draw-line{position:absolute;left:0;top:52px;height:6px;border-radius:3px;background:var(--rose);
+  width:0;transition:width 1.6s linear}
+.draw-pencil{position:absolute;left:0;top:16px;transform:translateX(-50%);transition:left 1.6s linear;font-size:34px}
+.draw-ticks{position:absolute;left:0;right:0;top:44px;height:20px;pointer-events:none}
+.draw-tick{position:absolute;top:0;width:1px;height:14px;background:var(--border-strong)}
+.draw-num{position:absolute;top:52px;font-size:20px;color:var(--text-3);transform:translateX(-50%)}
+.candies{position:absolute;left:0;top:64px;width:100%;height:40px}
+.candy-dot{position:absolute;width:26px;height:26px;border-radius:50%;opacity:0;transform:scale(.4);
+  background:radial-gradient(circle at 34% 30%,#fff,#F3E7DE 60%,#E2D1C6);
+  border:1px solid rgba(74,58,54,.16);transition:.4s var(--ease)}
+.candy-dot.on{opacity:1;transform:none}
+
+/* ---------- 3-e. 结语 ---------- */
+.close-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center}
+.close-wrap .line{font-family:var(--font-display);font-size:54px;line-height:1.45}
+.hw{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;width:100%;max-width:1440px;text-align:left}
+.hw h4{font-size:23px;margin-bottom:8px}
+.hw p{font-size:19px;color:var(--text-2);line-height:1.6;margin:0}
+
+/* 彩带画布 */
+.confetti-cv{position:fixed;inset:0;pointer-events:none;z-index:60}
+
+/* 翻页笔黑屏键（B / .）：铺一层黑，再按一次或按 Esc 收回 */
+.deck-blackout{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;
+  transition:opacity .22s var(--ease);z-index:90}
+.deck-blackout.on{opacity:1}
+@media print{.deck-blackout{display:none!important}}
+
+/* 打印 / 导出 PDF：一张 slide 一页，保持 16:9，不加页边距。
+   老师可以直接 Ctrl+P 存成 PDF 当讲义发。 */
+@page{size:1920px 1080px;margin:0}
+
+/* ---------- 5. 页配音开关 ---------- */
+.deck-audio{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;align-items:center;gap:8px;
+  font-family:var(--font-sans)}
+.deck-audio button{font-family:var(--font-sans);font-size:14px;padding:8px 15px;border-radius:999px;
+  border:1px solid var(--border);background:rgba(255,255,255,.94);color:var(--text-2);cursor:pointer;
+  box-shadow:var(--shadow);transition:opacity .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.deck-audio button:hover{border-color:var(--rose);color:var(--rose-d)}
+.deck-audio.off button{opacity:.6}
+.deck-audio.has .da-toggle{border-color:var(--sage);color:var(--sage-d)}
+.deck-audio .da-replay{opacity:0;pointer-events:none}
+.deck-audio.has .da-replay{opacity:1;pointer-events:auto}
+.deck-audio button:disabled{opacity:.35;cursor:default}
+@media print{.deck-audio{display:none!important}}
+
+/* ============================================================
+   6. 35 页版新增（封面 / 深色页 / 照片 / 尺子高亮 / 百宝盒 / 小图对比 / 切换）
+   6-a 封面与共用图形
+   ============================================================ */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.cover .cover-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;margin:0 auto;position:relative;z-index:2}
+.cover h1{font-size:122px;line-height:1.08;margin:0}
+.cover-band{max-width:680px;margin:40px auto 0}
+.cover-sub{font-size:30px;font-weight:300;color:var(--text-2);margin:28px 0 0}
+/* 右下角署名。绝对定位挂在 .cover 上；.cover 不能写 position:relative，见 3-a 的说明。 */
+.cover-teach{position:absolute;right:88px;bottom:64px;font-size:26px;letter-spacing:.08em;color:var(--text-3);margin:0}
+
+.candy-art{display:block;width:100%;height:100%}
+.candy-hero{width:380px;height:380px;margin:0 auto;animation:candyfloat 5s ease-in-out infinite}
+@keyframes candyfloat{0%,100%{transform:translateY(-10px)}50%{transform:translateY(10px)}}
+/* P2 的"点我"提示：不写字，用一圈会呼吸的光 + 一个手指图标；点过之后淡出 */
+.candy-hero{position:relative}
+.tap-halo{position:absolute;left:50%;top:50%;width:78%;height:78%;margin:-39% 0 0 -39%;
+  border-radius:50%;pointer-events:none;
+  border:3px dashed var(--rose);opacity:.5;
+  animation:haloPulse 2.6s var(--ease) infinite}
+@keyframes haloPulse{0%{transform:scale(.86);opacity:0}35%{opacity:.75}100%{transform:scale(1.12);opacity:0}}
+.tap-hand{position:absolute;left:50%;bottom:-52px;transform:translateX(-50%);
+  font-size:44px;line-height:1;pointer-events:none;
+  animation:handBob 1.8s var(--ease) infinite;
+  filter:drop-shadow(0 4px 6px rgba(93,70,38,.25))}
+@keyframes handBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-12px)}}
+.candy-hero:has(~ .p2-story.on) .tap-halo,
+.candy-hero:has(~ .p2-story.on) .tap-hand{opacity:0;transition:opacity .4s var(--ease)}
+.candy-art-sm{width:230px;height:230px;margin:0 auto}
+.candy-icon{display:block;width:80px;height:80px}
+.ask-line{font-size:64px;margin:20px 0 0}
+.qmark{font-family:var(--font-display);font-size:170px;line-height:1;color:var(--rose-d);
+  margin:6px 0 0;animation:qflash 1.5s ease-in-out infinite}
+@keyframes qflash{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+
+/* 气泡（顾爷爷说话） */
+.say{position:relative;max-width:1040px;padding:26px 32px;border-radius:var(--radius-lg);
+  border:1px solid var(--border);border-left:5px solid var(--sage);background:var(--surface);
+  box-shadow:var(--shadow);cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.say:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.say-line{font-size:28px;line-height:1.6;margin:0;color:var(--text-1)}
+.say .js-box{font-size:26px;line-height:1.65;color:var(--text-2)}
+.gu-cartoon{display:flex;align-items:center;justify-content:center}
+.gu-cartoon-art{width:min(100%,300px);height:auto}
+
+/* ============================================================
+   6-b 深色页（P3 / P26 / P35）
+   ============================================================ */
+.slide.dark{background:#12101A;color:#F3EEE9}
+.slide.dark .tap-hint{color:#E7BFCB}
+.year-dark{font-family:var(--font-display);font-size:158px;line-height:1;letter-spacing:.06em;margin:0}
+.dark-line{font-family:var(--font-display);font-size:60px;line-height:1.52;margin:0}
+.slide.dark .dark-line+.dark-line{margin-top:10px}
+/* 逐行出现：一行一行错开，不用点两次 */
+[data-stagger] .js-box{transition-delay:calc(var(--i,0) * .24s)}
+
+/* 整页照片（P25）：屏幕上不放任何文字 */
+.photo-slide{padding:0}
+.photo-slide .photo-full{position:absolute;inset:0}
+.photo-full>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-full>img.miss{display:none}
+.photo-full .ph-fallback{background:var(--surface-2)}
+.veil{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 38%,rgba(18,16,26,.42),rgba(18,16,26,.86))}
+
+/* ============================================================
+   6-c 照片：真照片放进来就自动替换线描占位
+   ============================================================ */
+.photo-fig{margin:0}
+.photo{position:relative;overflow:hidden;border-radius:var(--radius-lg);
+  background:var(--surface-2);border:1px solid var(--border)}
+.photo>img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover}
+.photo>img.miss{display:none}
+.ph-fallback{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;padding:26px;text-align:center}
+.ph-icon{width:min(46%,210px);height:auto;opacity:.95}
+.ph-note{font-size:15px;line-height:1.7;color:var(--text-3);max-width:34ch}
+.ph-note b{color:var(--rose-d);font-family:var(--font-mono);font-weight:600}
+.ratio-16x10{aspect-ratio:16/10}
+.ratio-16x9{aspect-ratio:16/9}
+.ratio-4x3{aspect-ratio:4/3}
+.ratio-4x5{aspect-ratio:4/5}
+.ratio-1x1{aspect-ratio:1/1}
+
+/* ============================================================
+   6-d 尺子上的高亮：.rb 包住 SVG，用百分比对齐刻度
+       （尺子内部几何：0 刻度在 pad=34 处，每 1 厘米 = 88）
+   ============================================================ */
+.rb{position:relative}
+.ring{position:absolute;left:var(--x);width:var(--w);top:var(--y);height:var(--h);
+  border:4px solid var(--rose);border-radius:20px;opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease)}
+.ring.on{opacity:1}
+.ov{position:absolute;left:var(--x);width:var(--w);top:22%;height:29%;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(240,214,160,.66),rgba(240,214,160,.3));
+  border:2px solid var(--butter-d);transition:opacity .45s var(--ease)}
+.ov.on{opacity:1}
+.ov span{font-size:26px;font-weight:600;color:var(--butter-d)}
+.start-line{position:absolute;left:2.45%;top:21%;height:31%;width:0;
+  border-left:3px dashed var(--butter-d);opacity:0;transition:opacity .3s var(--ease)}
+.start-line::after{content:"起跑线";position:absolute;left:10px;top:-32px;font-size:17px;
+  color:var(--butter-d);white-space:nowrap}
+.rb.zero-lit .start-line{opacity:1;animation:goldpulse 1.6s ease-in-out 2}
+@keyframes goldpulse{0%,100%{box-shadow:0 0 0 0 rgba(240,214,160,0)}50%{box-shadow:0 0 26px 7px rgba(240,214,160,.9)}}
+/* 拖尺子对齐后，0 到 1 那一段金光闪 —— 位置跟着 .meas-object（left:260px、宽 112px）走 */
+.seg-glow{position:absolute;left:260px;top:272px;width:112px;height:112px;border-radius:10px;
+  background:linear-gradient(180deg,rgba(240,214,160,.6),rgba(240,214,160,.22));
+  border:2px solid var(--butter-d);opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.measure-stage.settled .seg-glow{opacity:1;animation:goldpulse 1.9s ease-in-out infinite}
+
+/* ============================================================
+   6-e 1 厘米百宝盒（P15）：点一点，东西自己分进框里
+   ============================================================ */
+.sort{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.sort-pool{display:flex;flex-wrap:wrap;gap:16px;padding:28px;min-height:210px;
+  border-radius:var(--radius-lg);background:var(--surface-2);border:1px dashed var(--border-strong)}
+.sort-item{font-family:var(--font-sans);font-size:23px;padding:16px 26px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);color:var(--text-1);cursor:pointer;
+  box-shadow:var(--shadow);transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s}
+.sort-item:hover{transform:translateY(-3px)}
+.sort-item.placed{cursor:default;font-size:20px;padding:10px 20px;animation:popin .35s var(--ease)}
+.sort-item.placed:hover{transform:none}
+.sort-item.yes{border-color:var(--sage);background:color-mix(in srgb,var(--sage) 20%,#fff)}
+.sort-item.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,#fff)}
+.sort-item .fit{margin-left:10px;font-size:16px;padding:2px 10px;border-radius:999px;
+  background:rgba(74,58,54,.08);color:var(--text-2)}
+@keyframes popin{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.sort-bins{display:grid;gap:20px}
+.bin{border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);
+  padding:20px 24px;min-height:128px;box-shadow:var(--shadow)}
+.bin-h{display:inline-block;font-size:22px;font-weight:600;padding:6px 16px;border-radius:999px;margin-bottom:14px}
+.bin-yes .bin-h{background:color-mix(in srgb,var(--sage) 34%,#fff);color:var(--sage-d)}
+.bin-no  .bin-h{background:color-mix(in srgb,var(--bad) 20%,#fff);color:#963F3F}
+.bin-body{display:flex;flex-wrap:wrap;gap:12px;min-height:40px;align-items:center}
+.sort-say{font-size:22px;color:var(--text-2);margin-top:24px}
+
+/* ============================================================
+   6-f 小图对比 / 辨一辨（P20 / P22）
+   ============================================================ */
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.diag-grid-3{grid-template-columns:repeat(3,1fr);gap:26px}
+.diag-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);
+  padding:24px 26px 26px;box-shadow:var(--shadow)}
+.diag-card.hit{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.diag-t{font-size:22px;font-weight:600;margin:0 0 14px}
+.diag{position:relative;padding-top:30px}
+.diag-ruler{display:block;width:100%;height:auto}
+.diag-obj{position:absolute;left:var(--x);width:var(--w);top:var(--y,58%);height:30px;border-radius:6px;
+  background:linear-gradient(180deg,#FBE7D6,#F3D6C1);border:1px solid #E0B79B}
+.diag-obj-tilt{transform:rotate(-6deg);transform-origin:left center}
+.diag-mark{position:absolute;left:var(--x);width:var(--w);top:6px;height:24px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600}
+.bad-mark{background:color-mix(in srgb,var(--bad) 26%,#fff);color:#963F3F;border:1px solid var(--bad)}
+.good-mark{background:color-mix(in srgb,var(--sage) 30%,#fff);color:var(--sage-d);border:1px solid var(--sage)}
+.diag-cap{font-size:19px;color:var(--text-3);margin:14px 0 0}
+.judge{margin-top:16px}
+.choice-mini{display:inline-flex;align-items:center;justify-content:center;padding:0;
+  width:104px;height:58px;font-size:28px;font-weight:700;line-height:1;box-shadow:none;border-radius:14px}
+.diag-card .js-box{font-size:20px;line-height:1.55;color:var(--text-2)}
+
+/* ============================================================
+   6-g 切换（P34）
+   ============================================================ */
+.switch{margin-top:26px}
+.sw-tabs{display:flex;gap:12px;flex-wrap:wrap}
+.sw-btn{font-family:var(--font-sans);font-size:21px;padding:14px 30px;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface);color:var(--text-2);cursor:pointer;
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s}
+.sw-btn:hover{border-color:var(--rose)}
+.sw-btn.on{background:var(--rose);border-color:var(--rose);color:var(--accent-ink);font-weight:600}
+.sw-panels{margin-top:28px;min-height:520px}
+.sw-panel{display:none}
+.sw-panel.on{display:block;animation:fadeup .4s var(--ease)}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sw-panel-dark{background:#12101A;color:#F3EEE9;border-radius:var(--radius-lg);
+  padding:74px 60px;text-align:center}
+.mem-line{font-size:32px;color:#D9C6D2;margin:0}
+.mem-line2{font-family:var(--font-display);font-size:66px;margin:18px 0 28px}
+.mem-line3{font-size:30px;color:#D9C6D2;margin:0}
+
+/* ============================================================
+   6-h 42 年时间轴（P32）：五个节点 + 42 年的横条
+   ============================================================ */
+.tl2 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.tl-span{margin-top:64px;text-align:center}
+.tl-span span{display:inline-block;padding:14px 44px;border-radius:999px;
+  background:var(--grad-soft);border:1px solid var(--border);
+  font-family:var(--font-display);font-size:38px;color:var(--rose-d)}
+
+/* ============================================================
+   6-i 画线段：两个端点（P29）
+   ============================================================ */
+.draw-endpoint{position:absolute;top:45px;width:15px;height:15px;margin-left:-7.5px;border-radius:50%;
+  background:var(--rose-d);opacity:0;transform:scale(.4);transition:.3s var(--ease)}
+.draw-endpoint.on{opacity:1;transform:none}
+.draw-end-label{position:absolute;top:-4px;font-size:22px;font-weight:600;color:var(--rose-d);
+  transform:translateX(-50%);opacity:0;transition:.3s var(--ease);white-space:nowrap}
+.draw-end-label.on{opacity:1}
+
+/* 导出 PDF 时把背景色也印上去（深色页、马卡龙卡片都需要） */
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sw-panel{display:none}
+  .sw-panel.on{display:block}
+}
+
+/* ============================================================
+   7. 旧纸底色：整体泛黄偏旧，每一页按情感换色
+      令牌在 assets/themes/vintage-paper.css；这里只按页覆盖。
+      .slide 本身是透明的（画在 .deck 的底色上），所以要显式给背景。
+      底色 + 纸颗粒都写在 background 上，颗粒因此永远在文字下面。
+      ============================================================ */
+.slide[data-mood]{
+  background-color:var(--bg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background-size:128px 128px;
+  background-blend-mode:soft-light;
+}
+
+/* --- 封面：微微发黄的旧色 + 两道折痕 + 边缘压暗 --- */
+.slide[data-cover-crease]{
+  background-image:
+    radial-gradient(125% 105% at 50% -10%,rgba(255,251,238,.60),rgba(146,116,66,.10) 66%,rgba(146,116,66,.22)),
+    linear-gradient(104deg,transparent 0 37%,rgba(255,253,242,.46) 38.4%,rgba(150,120,70,.14) 40%,transparent 41.6%),
+    linear-gradient(76deg,transparent 0 61%,rgba(255,253,242,.40) 62.4%,rgba(150,120,70,.12) 64%,transparent 65.6%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  background-size:cover,cover,cover,128px 128px;
+  background-blend-mode:normal,normal,normal,soft-light;
+}
+
+/* 导出 PDF / 打印时去掉纸纹：颗粒会被整页栅格化，把 PDF 从 3 MB 撑到 90 MB。
+   底色和封面的折痕都保留（它们是渐变，不占体积）。 */
+@media print{
+  .slide[data-mood]{background-image:none}
+  .slide[data-cover-crease]{
+    background-image:
+      radial-gradient(125% 105% at 50% -10%,rgba(255,251,238,.60),rgba(146,116,66,.10) 66%,rgba(146,116,66,.22)),
+      linear-gradient(104deg,transparent 0 37%,rgba(255,253,242,.46) 38.4%,rgba(150,120,70,.14) 40%,transparent 41.6%),
+      linear-gradient(76deg,transparent 0 61%,rgba(255,253,242,.40) 62.4%,rgba(150,120,70,.12) 64%,transparent 65.6%);
+  }
+}
+
+/* --- 八档情感底色 --- */
+/* 旧纸黄：默认，也是全课的“纸” */
+.slide[data-mood="old"]{
+  --bg:#F1E3C6;--bg-soft:#EAD9B6;--surface:#FBF4E2;--surface-2:#F4E8CC;
+}
+/* 灰：糖丸特写，斜侧光影压住那一点甜 */
+.slide[data-mood="gray"]{
+  --bg:#E4DFD3;--bg-soft:#DCD6C8;--surface:#F4F1E8;--surface-2:#EBE6DA;
+  --text-2:#5F574B;--text-3:#8B8274;
+  --rose:#A89489;--rose-d:#6E5C51;--sage:#9FA894;--sage-d:#5E6A57;
+}
+.slide[data-mood="gray"] .candy-art{
+  filter:drop-shadow(-34px 38px 34px rgba(58,45,26,.40)) drop-shadow(12px 8px 12px rgba(58,45,26,.18));
+}
+/* 冷灰绿：1955 的疫情、第五站的检验台 */
+.slide[data-mood="cold"]{
+  --bg:#DEE2D8;--bg-soft:#D4D9CD;--surface:#F1F3EB;--surface-2:#E6E9DF;
+  --text-1:#2F3A33;--text-2:#57635A;--text-3:#87907F;
+  --rose:#8C9C90;--rose-d:#4C6155;--sage:#94A88C;--sage-d:#4F6349;
+  --butter:#C7C79B;--butter-d:#75753F;--mist:#9FB0A9;--mist-d:#516460;
+  --accent:#5F7A6C;
+}
+/* 米：平稳的动手页（认识工具、量、数） */
+.slide[data-mood="calm"]{
+  --bg:#F5ECD6;--bg-soft:#EFE3C7;--surface:#FDF9EE;--surface-2:#F7EFDC;
+}
+/* 暖琥珀：希望、温情、小组活动 */
+.slide[data-mood="warm"]{
+  --bg:#F3E1BB;--bg-soft:#EDD8AC;--surface:#FDF6E5;--surface-2:#F6EACF;
+  --accent:#C06A3C;
+}
+/* 深旧纸褐：老照片那几页 */
+.slide[data-mood="sepia"]{
+  --bg:#E4D1AA;--bg-soft:#DBC69C;--surface:#F8EFD8;--surface-2:#EFE1C3;
+  --text-1:#382C1E;--text-2:#61503A;--text-3:#8E7B59;
+  --butter-d:#7E5C22;
+}
+/* 亮米金：2000 年的好消息 */
+.slide[data-mood="triumph"]{
+  --bg:#F8F0D6;--bg-soft:#F2E6C2;--surface:#FFFBF0;--surface-2:#FBF3DC;
+  --butter:#DCB24C;--butter-d:#8A6524;--accent:#B9772F;
+}
+/* 黑场：带一点褐的黑，不是纯黑 */
+.slide[data-mood="dark"]{
+  --bg:#14110B;--bg-soft:#1C1811;--surface:#231E15;--surface-2:#1C1811;
+  --border:rgba(240,224,190,.18);--border-strong:rgba(240,224,190,.34);
+  --text-1:#F4ECDA;--text-2:#CBBC9E;--text-3:#9A8A6E;
+  --rose:#C4754E;--rose-d:#E0A681;--sage:#9DAB7C;--sage-d:#C0CCA0;
+  --butter:#D9B76A;--butter-d:#E2C489;--mist:#A9B3AE;--mist-d:#BFC6C0;
+  color:var(--text-1);
+}
+
+/* 旧纸上的深色页：把原来那套冷黑的样式换成年代的褐黑 */
+.slide.dark{background:#14110B;color:#F3EEE9}
+.slide.dark .tap-hint{color:#E3C4A6}
+
+/* ============================================================
+   8. 这一版新加的小组件
+   ============================================================ */
+/* --- 视频位（P4）：文件没放进来时显示说明 --- */
+.video-fig{margin:0}
+/* 封面帧同时当容器背景：播放器没渲染出来时（比如导出 PDF）也不会是一块黑 */
+.video{position:relative;overflow:hidden;border-radius:var(--radius-lg);
+  background:#1A160F url("video/nantong-1955.jpg") center/cover no-repeat;
+  border:1px solid var(--border);aspect-ratio:16/9;max-width:900px;box-shadow:var(--shadow)}
+.video>video{position:relative;z-index:1;display:block;width:100%;height:100%;
+  object-fit:contain;background:#000}
+.video>video.miss{display:none}
+.video .ph-fallback{position:absolute;inset:0;z-index:0;background:var(--surface-2)}
+
+/* --- 食指 ≈ 1 厘米（P15） --- */
+.finger-box{display:flex;align-items:center;gap:24px;padding:16px 26px;
+  border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border);
+  box-shadow:var(--shadow)}
+.finger-art{display:block;width:104px;height:auto}
+.finger-cap{font-size:22px;color:var(--text-1);margin:0}
+
+/* --- 断尺（P23）：用底色把尺子左边“咬掉”一块 --- */
+.ruler-break{fill:var(--surface)}
+.ruler-break-line{fill:none;stroke:rgba(101,74,42,.55);stroke-width:2.5}
+
+/* --- 抠出来的爷爷形象：叠在手绘线稿上，文件不在就露出线稿 --- */
+.gu-cartoon{position:relative}
+.gu-figure{position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  height:100%;width:auto;max-width:none;
+  filter:drop-shadow(0 12px 24px rgba(93,70,38,.22))}
+.gu-figure.miss{display:none}
+
+/* 肖像位的占位层：先用抠出来的头肩像，撑满相框（真照片放进来会盖住它） */
+.ph-figure{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;border-radius:0;box-shadow:none}
+.ph-figure.miss{display:none}
+
+/* 照片/视频还没放进来时，屏上不再显示文件名（要查文件名看 img/照片清单.md） */
+.ph-note{display:none!important}
+
+/* --- 南通（影像页）：影像再大一点，两边留白收窄 --- */
+.wide-page{padding:64px}
+.video-big{grid-template-columns:1.74fr 1fr;gap:36px;align-items:center}
+.video-big .video{max-width:none;width:100%}
+.video-big .img-cap{font-size:17px}
+.video-big .kicker{font-size:16px}
+.video-big .h2{font-size:58px;line-height:1.2}
+.video-big .lede{font-size:32px}
+
+/* --- 肖像位（顾方舟 / 和顾爷爷说句话）：人物抠图（背景已去掉），不要相框 --- */
+.photo.portrait-cut{background:transparent;border:none;box-shadow:none}
+.photo.portrait-cut .ph-figure{object-fit:contain;object-position:center bottom}
+.photo.portrait-cut .ph-icon{opacity:.5}
+/* 顾方舟这一页：人物与所有文字再放大一档 */
+.person-big{grid-template-columns:600px 1fr;gap:54px}
+.person-big .img-cap{font-size:21px;text-align:left}
+.person-big .lede{font-size:42px;line-height:1.5}
+.person-big .tap-hint{font-size:30px}
+.person-big .big-q{font-size:66px;line-height:1.28}
+
+/* 「先得有把尺子」「给糖丸画标签」两页：人物抠图撑满整个图像框，底下不再垫手绘稿 */
+.person-fill{width:100%}
+.person-fill .photo{width:100%}
+.ratio-3x4{aspect-ratio:3/4}
+
+/* 「先得有把尺子」「认识直尺」两页：文字整体放大一档 */
+.text-big .kicker{font-size:21px}
+.text-big .h2{font-size:64px}
+.text-big .say-line{font-size:42px;line-height:1.45}
+.text-big .chip{font-size:25px;padding:12px 24px}
+.text-big .lede{font-size:34px}
+.text-big .tap-hint{font-size:27px}
+
+/* --- 三选一：标题行本身就是大字，不再另起一行 h2 --- */
+.big-head{font-size:64px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 6px}
+
+/* 三选一的印章：走不通＝红章，他选了这个＝绿章（原来三张都是同一个陶土红） */
+.choice .stamp.bad{background:var(--bad);color:#FFF4F1}
+.choice .stamp.good{background:var(--sage);color:#23301A}
+.choice.ok.picked{border-color:var(--sage);background:color-mix(in srgb,var(--sage) 14%,#fff)}
+
+/* --- 三选一：打针 / 药水两个图标放大，和糖丸那个配成一套 --- */
+.choice .icon{font-size:84px;line-height:1}
+.candy-icon{width:88px;height:88px}
+
+/* --- 尺子上的红色标注（第 8 页）：0 刻度线变红、整排数字被框住 --- */
+.tick-zero.zero-red{stroke:#C0392B;stroke-width:4}
+.num-band{fill:none;stroke:#C0392B;stroke-width:3;opacity:0;transition:opacity .3s var(--ease)}
+.num-band.on{opacity:1}
+/* 点 cm：cm 本身变红变大，下面再出现"厘米"（原来"厘米"贴着尺子底边被裁掉一截） */
+.cm-mark.lit{fill:#C0392B;font-weight:700}
+svg[data-ruler-zero] .seg-label{font-size:38px}
+svg[data-ruler-zero] .cm-mark{font-size:30px}
+
+/* --- 百宝盒（小组活动）：所有文字放大一档 --- */
+.bag-big .kicker{font-size:21px}
+.bag-big .h2{font-size:56px}
+.bag-big .lede{font-size:31px}
+.bag-big .sort-item{font-size:27px;padding:18px 30px}
+.bag-big .sort-item.placed{font-size:23px}
+.bag-big .bin-h{font-size:26px}
+.bag-big .sort-say{font-size:27px}
+.bag-big .verdict{font-size:30px}
+
+/* --- 身体里藏着 1 厘米（新页）：手指放中间 --- */
+.finger-page .finger-hero{justify-content:center;gap:56px;padding:36px 48px;max-width:1500px}
+.finger-page .finger-art{width:330px}
+.finger-page .finger-cap{font-size:32px;line-height:1.6}
+
+/* --- 百宝盒里的五个物品：放实物图（图还没放进 img/ 时只显示文字，不会报错） --- */
+.sort-item{display:flex;align-items:center;gap:14px}
+.item-img{width:78px;height:78px;flex:none;object-fit:contain;border-radius:8px}
+.item-img.miss{display:none}
+.sort-item.placed .item-img{width:56px;height:56px}
+
+/* --- 百宝盒物品：span 用矢量实物图打底，img 放真照片（有照片就盖住矢量图） --- */
+.item-pic{width:78px;height:78px;flex:none;border-radius:8px;
+  background-position:center;background-repeat:no-repeat;background-size:contain}
+.item-pic.i-btn{background-image:url("img/物品-小纽扣.svg")}
+.item-pic.i-aaa{background-image:url("img/物品-七号电池.svg")}
+.item-pic.i-soy{background-image:url("img/物品-黄豆.svg")}
+.item-pic.i-jiao{background-image:url("img/物品-一角硬币.svg")}
+.item-pic.i-cell{background-image:url("img/物品-纽扣电池.svg")}
+.item-pic .item-img{width:100%;height:100%;object-fit:contain}
+.sort-item.placed .item-pic{width:56px;height:56px}
+
+/* --- 画线段：点铅笔就开始画（铅笔本身当按钮，加一圈会呼吸的提示） --- */
+.draw-pencil{cursor:pointer;z-index:3;padding:6px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  appearance:none;-webkit-appearance:none;border:none;background:transparent;
+  font-family:var(--font-sans);font-size:34px;line-height:1}
+.draw-pencil:hover{transform:translateX(-50%) scale(1.12)}
+.pencil-halo{position:absolute;left:50%;top:50%;width:74px;height:74px;margin:-37px 0 0 -37px;
+  border-radius:50%;border:3px dashed var(--rose);pointer-events:none;
+  animation:haloPulse 2.6s var(--ease) infinite}
+
+/* --- 说句话：语音提问题的麦克风按钮 --- */
+.mic-btn{font-family:var(--font-sans);font-size:19px;padding:14px 24px;border-radius:999px;
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text-1);
+  cursor:pointer;white-space:nowrap;transition:.25s var(--ease)}
+.mic-btn:hover{border-color:var(--rose);color:var(--rose-d)}
+.mic-btn.listening{background:var(--rose);border-color:var(--rose);color:var(--accent-ink);
+  animation:micPulse 1.4s ease-in-out infinite}
+.mic-btn.failed{opacity:.55;cursor:default}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(196,117,78,.0)}50%{box-shadow:0 0 0 10px rgba(196,117,78,.18)}}
+
+/* --- 第 7 页（先得有把尺子）：所有字再放大一档 --- */
+.p7-big .kicker{font-size:26px;letter-spacing:.06em}
+.p7-big .say{padding:34px 40px;max-width:1180px}
+.p7-big .say-line{font-size:54px;line-height:1.42}
+.p7-big .say .js-box{font-size:40px}
+
+/* --- 百宝盒的物品图放大一档（原来 78px 太小） --- */
+.bag-big .item-pic{width:168px;height:168px}
+.bag-big .sort-item{gap:18px;padding:16px 24px}
+.bag-big .sort-item.placed .item-pic{width:112px;height:112px}
+.bag-big .sort-pool{gap:14px;padding:22px}
+
+/* --- 身体里的 1 厘米：标题用大字（原来是行小字 + 一个 h2） --- */
+.finger-title{font-size:56px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 8px}
+.finger-page .finger-cap{font-size:38px;line-height:1.55}
+
+/* ============================================================
+   全会话字号整体放大一档（2026-10-11 老师要求"所有文字都更大"）
+   注意：每页里那些 .p7-big / .bag-big / .finger-title 之类的规则特异度更高，
+   会盖过这里，所以这些页的字号不受影响。
+   ============================================================ */
+.lede{font-size:28px;line-height:1.62}
+.h2{font-size:56px}
+.h1{font-size:86px}
+.kicker{font-size:17px}
+.chip{font-size:23px;padding:11px 22px}
+.note-line{font-size:21px}
+.big-q{font-size:52px}
+.tap-hint{font-size:22px}
+.say-line{font-size:32px}
+.dark-line{font-size:66px}
+.card h4,.choice h4{font-size:32px}
+.choice p{font-size:25px}
+.step3 h4{font-size:26px}
+.step3 p{font-size:24px}
+.step3 .n{width:56px;height:56px;font-size:24px}
+.bin-h{font-size:26px}
+.sort-say{font-size:26px}
+.diag-t{font-size:24px}
+.diag-cap{font-size:21px}
+.diag-card .js-box{font-size:22px}
+.img-cap{font-size:17px}
+.verdict{font-size:30px}
+.talk-empty{font-size:24px}
+.ask{font-size:22px}
+.ask .q{font-size:24px}
+.bubble{font-size:25px}
+.tl2 .node .yr{font-size:29px}
+.tl2 .node .tx{font-size:22px}
+.finger-cap{font-size:26px}
+.meas-hint{font-size:20px}
+.meas-result .t{font-size:19px}
+
+/* 生产线/画线段上的糖丸：大小由 JS 按"1 厘米"算出来，这里只保证位置和过渡 */
+.candies{position:absolute;left:0;top:96px;width:100%}
+.candy-dot{position:absolute;top:0}
+
+/* --- 第 3 页黑场：三行打字机，字号逐级递减 --- */
+.black-lines p{margin:0}
+.bl-1 .anim-typewriter{font-family:var(--font-display);font-size:150px;line-height:1.1;letter-spacing:.04em}
+.bl-2 .anim-typewriter{font-family:var(--font-display);font-size:84px;line-height:1.2;letter-spacing:.08em}
+.bl-3 .anim-typewriter{font-size:42px;line-height:1.4;margin-top:26px;display:inline-block}
+.black-lines p+p{margin-top:22px}
+
+/* --- 第 3 页：三行打字机 + 点一下出影像 --- */
+.slide.dark .bl-hint{color:#E3C4A6;margin-top:24px}
+.black-lines .bl-video{margin:20px auto 0;max-width:880px;width:100%}
+.black-lines .bl-video .video{max-width:none;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.bl-1 .anim-typewriter{font-size:104px}
+.bl-2 .anim-typewriter{font-size:56px;line-height:1.3}
+/* 第三行已并掉 */
+.black-lines p+p{margin-top:18px}
+
+/* --- 第 3 页：打字不要光标竖线、放慢、一行一行打（2026-10-12）--- */
+.black-lines .anim-typewriter{
+  border-right:none;                       /* 去掉那根竖线 */
+  animation-name:kf-type;                  /* 只留"打字"那一段，去掉闪光标 */
+  animation-duration:2.2s;
+  animation-timing-function:steps(30,end);
+  animation-fill-mode:forwards;
+  animation-iteration-count:1}
+.black-lines .bl-1 .anim-typewriter{animation-delay:0s}
+.black-lines .bl-2 .anim-typewriter{animation-delay:2.5s}
+
+/* ============================================================
+   第 34 页：VR 实景（按住画面左右拖动，把展馆转一圈）
+   ============================================================ */
+/* 翻页不再"从右边滑进来"：base.css 里每页默认 translateX(30px)，
+   翻页时会有 0.5 秒偏右（投影上很像"整页往右移"）。改成只在原地淡入。 */
+.deck > .slide,
+.deck > .slide.is-prev,
+.deck > .slide.is-active{transform:none}
+.deck > .slide{transition:opacity .3s var(--ease)}
+
+.vr-veil{position:absolute;inset:0;z-index:6;background:#070605;overflow:hidden;
+  opacity:0;pointer-events:none;transition:opacity .45s var(--ease);cursor:grab;
+  touch-action:none;user-select:none;-webkit-user-select:none}
+.vr-veil.on{opacity:1;pointer-events:auto}
+.vr-veil.dragging{cursor:grabbing}
+.vr-pano{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+.vr-art{height:100%;flex:none;display:block}
+/* 真 360 实景图这一层压在两条手绘展厅之上；文件不存在就是透明的，什么都不显示 */
+.vr-real{position:absolute;top:0;left:0;height:100%;width:200%;pointer-events:none;
+  background-image:url("img/vr-kejiguan.jpg");background-repeat:repeat-x;
+  background-position:center;background-size:cover}
+.vr-top{position:absolute;left:36px;right:36px;top:30px;display:flex;
+  justify-content:space-between;align-items:flex-start;pointer-events:none}
+.vr-badge{font-size:24px;line-height:1.55;text-align:left;color:#F1E4C9;
+  background:rgba(11,9,7,.66);border:1px solid rgba(226,201,150,.34);
+  border-radius:14px;padding:12px 20px}
+.vr-compass{font-size:22px;color:#EAD9B4;background:rgba(11,9,7,.66);
+  border:1px solid rgba(226,201,150,.34);border-radius:999px;padding:8px 20px;
+  font-variant-numeric:tabular-nums}
+.vr-bottom{position:absolute;left:36px;right:36px;bottom:30px;display:flex;
+  justify-content:space-between;align-items:center;gap:18px}
+.vr-hint{font-size:24px;color:#F1E4C9;background:rgba(11,9,7,.66);
+  border:1px solid rgba(226,201,150,.34);border-radius:999px;padding:10px 22px}
+.vr-btns{display:flex;gap:12px}
+.vr-btns button{font-family:var(--font-sans);font-size:24px;color:#F6EBD2;
+  background:rgba(32,25,20,.92);border:1px solid rgba(226,201,150,.42);
+  border-radius:999px;padding:10px 22px;cursor:pointer;
+  transition:background .2s var(--ease)}
+.vr-btns button:hover{background:rgba(58,46,34,.95)}

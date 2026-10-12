@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" width="260" height="260">
+  <!-- 七号电池（立着放，宽度就是它的直径）：直径约 1.05 厘米 = 55，长 4.45 厘米 = 231 -->
+  <defs>
+    <linearGradient id="cellBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8E9AA6"/>
+      <stop offset="18%" stop-color="#DCE3E8"/>
+      <stop offset="45%" stop-color="#F2F5F7"/>
+      <stop offset="78%" stop-color="#B9C4CC"/>
+      <stop offset="100%" stop-color="#7C8894"/>
+    </linearGradient>
+    <linearGradient id="cellCap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9AA6B0"/>
+      <stop offset="40%" stop-color="#EEF2F5"/>
+      <stop offset="100%" stop-color="#8794A0"/>
+    </linearGradient>
+    <linearGradient id="cellLabel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2F5E8C"/>
+      <stop offset="30%" stop-color="#4E86BE"/>
+      <stop offset="70%" stop-color="#4E86BE"/>
+      <stop offset="100%" stop-color="#274F78"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="133" cy="248" rx="30" ry="6" fill="rgba(74,58,54,.20)"/>
+  <rect x="102" y="14" width="56" height="234" rx="9" fill="url(#cellBody)"/>
+  <rect x="110" y="8" width="40" height="12" rx="5" fill="url(#cellCap)"/>
+  <rect x="102" y="34" width="56" height="16" rx="4" fill="url(#cellCap)" opacity=".85"/>
+  <rect x="102" y="120" width="56" height="86" fill="url(#cellLabel)"/>
+  <text x="130" y="160" text-anchor="middle" font-size="24" font-family="Georgia,serif"
+        fill="#FFFFFF" opacity=".92">AAA</text>
+  <text x="130" y="188" text-anchor="middle" font-size="19" font-family="Georgia,serif"
+        fill="#DCE9F5" opacity=".9">1.5V</text>
+  <text x="130" y="30" text-anchor="middle" font-size="18" font-family="Georgia,serif" fill="#5B6670">＋</text>
+  <text x="130" y="240" text-anchor="middle" font-size="18" font-family="Georgia,serif" fill="#5B6670">－</text>
+  <rect x="106" y="18" width="7" height="226" rx="3.5" fill="#FFFFFF" opacity=".38"/>
+</svg>

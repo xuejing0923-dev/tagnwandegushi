@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="86 86 88 88" width="88" height="88">
+  <!-- 小纽扣：直径 1 厘米 = 52 单位（全组统一比例，1 厘米 = 52） -->
+  <defs>
+    <radialGradient id="btn" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#FFFDF8"/>
+      <stop offset="55%" stop-color="#F3E7D8"/>
+      <stop offset="100%" stop-color="#DCC8B4"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A98C"/>
+      <stop offset="1" stop-color="#9E7C5C"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="134" cy="138" rx="27" ry="26" fill="rgba(74,58,54,.18)"/>
+  <circle cx="130" cy="130" r="26" fill="url(#rim)"/>
+  <circle cx="130" cy="130" r="22.5" fill="url(#btn)"/>
+  <circle cx="130" cy="130" r="17" fill="none" stroke="rgba(120,96,70,.35)" stroke-width="1.4"/>
+  <circle cx="122" cy="122" r="3.1" fill="#B79A7C"/>
+  <circle cx="138" cy="122" r="3.1" fill="#B79A7C"/>
+  <circle cx="122" cy="138" r="3.1" fill="#B79A7C"/>
+  <circle cx="138" cy="138" r="3.1" fill="#B79A7C"/>
+  <ellipse cx="118" cy="118" rx="7" ry="4.5" fill="#FFFFFF" opacity=".55"/>
+</svg>

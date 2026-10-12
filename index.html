@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>糖丸做多大呢？ · 认识厘米</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/vintage-paper.css">
+<link rel="stylesheet" href="assets/animations/animations.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-themes="vintage-paper,macaron,midcentury,retro-tv,editorial-serif,japanese-minimal"
+      data-theme-base="assets/themes/">
+
+<!-- ============================================================
+     共用图形（<use href="#..."> 引用）
+     改动这里会同时改掉用到它的每一页。
+     ============================================================ -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-candy" cx="34%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset=".55" stop-color="#F7EEE6"/>
+      <stop offset="1" stop-color="#E2D1C6"/>
+    </radialGradient>
+    <linearGradient id="g-photo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4EFE9"/><stop offset="1" stop-color="#EBE1D8"/>
+    </linearGradient>
+
+    <!-- ============================================================
+         VR 实景（第 34 页）：中国科技馆“一生一事，守护童年”展
+         画布 3600×900（4:1）。左右两端都留成光墙，所以首尾相接、转圈看不出接缝。
+         想换成真 360 实景图：把全景照片存成 img/vr-kejiguan.jpg，它会自动盖住这张手绘图。
+         ============================================================ -->
+    <linearGradient id="vr-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#151110"/><stop offset=".34" stop-color="#261E18"/>
+      <stop offset=".78" stop-color="#171310"/><stop offset="1" stop-color="#0B0908"/>
+    </linearGradient>
+    <linearGradient id="vr-ceil" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#090706"/><stop offset="1" stop-color="#211A16"/>
+    </linearGradient>
+    <linearGradient id="vr-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B1614"/><stop offset="1" stop-color="#070605"/>
+    </linearGradient>
+    <linearGradient id="vr-glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C3D6E2" stop-opacity=".15"/>
+      <stop offset=".5" stop-color="#C3D6E2" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#C3D6E2" stop-opacity=".13"/>
+    </linearGradient>
+    <radialGradient id="vr-spot" cx="50%" cy="0%" r="72%">
+      <stop offset="0" stop-color="#FFE7BC" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#FFE7BC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vr-vig" cx="50%" cy="46%" r="72%">
+      <stop offset=".55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity=".72"/>
+    </radialGradient>
+
+    <g id="vr-hall">
+      <rect width="3600" height="900" fill="url(#vr-wall)"/>
+      <rect width="3600" height="152" fill="url(#vr-ceil)"/>
+      <rect y="150" width="3600" height="5" fill="#EFE0C2" opacity=".10"/>
+      <rect y="686" width="3600" height="7" fill="#E8D9BB" opacity=".09"/>
+      <rect y="693" width="3600" height="207" fill="url(#vr-floor)"/>
+
+      <!-- 顶灯 -->
+      <g fill="#F2DCAE">
+        <rect x="240" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+        <rect x="840" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+        <rect x="1440" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+        <rect x="2040" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+        <rect x="2640" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+        <rect x="3240" y="50" width="300" height="11" rx="5.5" opacity=".45"/>
+      </g>
+      <ellipse cx="470" cy="170" rx="300" ry="190" fill="url(#vr-spot)"/>
+      <ellipse cx="1320" cy="170" rx="300" ry="190" fill="url(#vr-spot)"/>
+      <ellipse cx="2280" cy="170" rx="340" ry="200" fill="url(#vr-spot)"/>
+      <ellipse cx="3040" cy="170" rx="300" ry="190" fill="url(#vr-spot)"/>
+
+      <!-- ① 保温桶与老文件（左手第一个展柜） -->
+      <g>
+        <rect x="90" y="286" width="700" height="344" rx="12" fill="#131010" opacity=".92"
+              stroke="rgba(226,201,150,.20)"/>
+        <rect x="118" y="316" width="300" height="238" rx="8" fill="url(#vr-glass)"
+              stroke="rgba(255,255,255,.10)"/>
+        <rect x="176" y="392" width="152" height="162" rx="22" fill="#CBD3D7"/>
+        <rect x="176" y="392" width="152" height="26" rx="13" fill="#98A1A6"/>
+        <rect x="196" y="366" width="112" height="28" rx="14" fill="#7B8489"/>
+        <rect x="196" y="430" width="112" height="8" rx="4" fill="#B9C2C6" opacity=".7"/>
+        <ellipse cx="252" cy="562" rx="92" ry="11" fill="#000" opacity=".38"/>
+        <g transform="translate(452 356) rotate(-5)">
+          <rect width="158" height="204" rx="6" fill="#EFE6D2" opacity=".95"/>
+          <g fill="#B7AA8E">
+            <rect x="18" y="30" width="122" height="7" rx="3.5"/>
+            <rect x="18" y="58" width="122" height="7" rx="3.5"/>
+            <rect x="18" y="86" width="96" height="7" rx="3.5"/>
+            <rect x="18" y="114" width="122" height="7" rx="3.5"/>
+            <rect x="18" y="142" width="74" height="7" rx="3.5"/>
+          </g>
+          <circle cx="126" cy="176" r="16" fill="none" stroke="#A6432F" stroke-width="4" opacity=".8"/>
+        </g>
+        <text x="440" y="672" text-anchor="middle" font-size="25" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#DCC9A4">保温桶与当年的文件</text>
+      </g>
+
+      <!-- ② 老照片墙 -->
+      <g>
+        <rect x="852" y="262" width="880" height="368" rx="10" fill="#121010"
+              stroke="rgba(226,201,150,.18)"/>
+        <text x="1292" y="312" text-anchor="middle" font-size="34" font-weight="700"
+              font-family="'Songti SC','STSong','SimSun',serif" fill="#E7D6B4">他的一生 · 老照片</text>
+        <g>
+          <g transform="translate(892 336)">
+            <rect width="200" height="126" rx="5" fill="#EFE6D2"/>
+            <circle cx="66" cy="52" r="19" fill="#C9B79A"/><path d="M34 126 C34 84 50 74 66 74 C82 74 98 84 98 126 Z" fill="#C9B79A"/>
+            <circle cx="146" cy="56" r="17" fill="#D3C2A6"/><path d="M118 126 C118 88 132 78 146 78 C160 78 174 88 174 126 Z" fill="#D3C2A6"/>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">1955 · 南通</text>
+          </g>
+          <g transform="translate(1152 336)">
+            <rect width="200" height="126" rx="5" fill="#E9DFC9"/>
+            <circle cx="100" cy="50" r="20" fill="#C2B092"/><path d="M64 126 C64 82 82 72 100 72 C118 72 136 82 136 126 Z" fill="#C2B092"/>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">1960 · 试药</text>
+          </g>
+          <g transform="translate(1412 336)">
+            <rect width="200" height="126" rx="5" fill="#EFE6D2"/>
+            <g fill="#C9B79A"><circle cx="60" cy="54" r="15"/><path d="M34 126 C34 90 46 82 60 82 C74 82 86 90 86 126 Z"/>
+            <circle cx="140" cy="54" r="15"/><path d="M114 126 C114 90 126 82 140 82 C154 82 166 90 166 126 Z"/></g>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">1978 · 计划免疫</text>
+          </g>
+          <g transform="translate(892 522)">
+            <rect width="200" height="126" rx="5" fill="#E9DFC9"/>
+            <circle cx="100" cy="52" r="19" fill="#C2B092"/><path d="M62 126 C62 84 80 74 100 74 C120 74 138 84 138 126 Z" fill="#C2B092"/>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">1985 · 喂糖丸</text>
+          </g>
+          <g transform="translate(1152 522)">
+            <rect width="200" height="126" rx="5" fill="#EFE6D2"/>
+            <g fill="#C9B79A"><circle cx="84" cy="50" r="16"/><path d="M58 126 C58 88 70 80 84 80 C98 80 110 88 110 126 Z"/>
+            <circle cx="130" cy="62" r="12"/><path d="M110 126 C110 96 120 90 130 90 C140 90 150 96 150 126 Z"/></g>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">2000 · 无脊灰</text>
+          </g>
+          <g transform="translate(1412 522)">
+            <rect width="200" height="126" rx="5" fill="#E9DFC9"/>
+            <rect x="18" y="18" width="164" height="90" rx="4" fill="#D8CCB2"/>
+            <text x="100" y="74" text-anchor="middle" font-size="34" font-family="'Songti SC','SimSun',serif" fill="#8E7C60">展</text>
+            <text y="152" text-anchor="middle" font-size="24" font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#B7A88B">2026 · 纪念展</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- ③ 中央主横幅 -->
+      <g>
+        <rect x="1810" y="192" width="920" height="418" rx="16" fill="#1C1613"
+              stroke="rgba(226,201,150,.38)" stroke-width="2"/>
+        <rect x="1832" y="214" width="876" height="374" rx="12" fill="none"
+              stroke="rgba(226,201,150,.16)"/>
+        <text x="2270" y="272" text-anchor="middle" font-size="25"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#C6B189">中国科技馆 · 顾方舟诞辰 100 周年纪念展</text>
+        <text x="2270" y="382" text-anchor="middle" font-size="84" font-weight="700"
+              font-family="'Songti SC','STSong','SimSun',serif" fill="#F5E6C6">一生一事，守护童年</text>
+        <text x="2270" y="452" text-anchor="middle" font-size="28"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#BFAE8C">一颗糖丸，护住一代孩子的童年</text>
+        <text x="2270" y="522" text-anchor="middle" font-size="24"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#948872">顾方舟　1926 — 2019</text>
+      </g>
+
+      <!-- ④ 展柜：糖丸（配 1 厘米的红标尺） -->
+      <g>
+        <rect x="2790" y="286" width="360" height="344" rx="12" fill="url(#vr-glass)"
+              stroke="rgba(226,201,150,.34)"/>
+        <rect x="2812" y="308" width="316" height="300" rx="8" fill="none" stroke="rgba(255,255,255,.09)"/>
+        <rect x="2876" y="374" width="118" height="172" rx="16" fill="#F7F1E6" opacity=".94"/>
+        <rect x="2894" y="356" width="82" height="22" rx="8" fill="#D8CAB4"/>
+        <g fill="#FFFFFF">
+          <circle cx="2904" cy="424" r="13"/><circle cx="2938" cy="418" r="13"/><circle cx="2972" cy="426" r="13"/>
+          <circle cx="2920" cy="458" r="13"/><circle cx="2956" cy="454" r="13"/><circle cx="2900" cy="492" r="13"/>
+          <circle cx="2936" cy="488" r="13"/><circle cx="2972" cy="492" r="13"/>
+        </g>
+        <circle cx="3056" cy="424" r="26" fill="#FFFDF8" stroke="rgba(74,58,54,.18)"/>
+        <g stroke="#C0392B" stroke-width="3">
+          <line x1="3016" y1="398" x2="3096" y2="398"/>
+          <line x1="3016" y1="394" x2="3016" y2="402"/>
+          <line x1="3096" y1="394" x2="3096" y2="402"/>
+        </g>
+        <text x="3056" y="378" text-anchor="middle" font-size="24"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#E3A79C">1 厘米</text>
+        <text x="2970" y="672" text-anchor="middle" font-size="25"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#DCC9A4">糖丸 · 直径 1 厘米</text>
+      </g>
+
+      <!-- ⑤ 展柜：包衣机 -->
+      <g>
+        <rect x="3200" y="286" width="360" height="344" rx="12" fill="url(#vr-glass)"
+              stroke="rgba(226,201,150,.34)"/>
+        <rect x="3222" y="308" width="316" height="300" rx="8" fill="none" stroke="rgba(255,255,255,.09)"/>
+        <ellipse cx="3380" cy="430" rx="94" ry="84" fill="#8C97A1"/>
+        <ellipse cx="3380" cy="430" rx="70" ry="62" fill="#5C666D"/>
+        <ellipse cx="3356" cy="406" rx="26" ry="14" fill="#AEB8C0" opacity=".55"/>
+        <rect x="3310" y="512" width="140" height="42" rx="10" fill="#6A747D"/>
+        <rect x="3262" y="552" width="236" height="18" rx="8" fill="#48515A"/>
+        <text x="3380" y="672" text-anchor="middle" font-size="25"
+              font-family="'PingFang SC','Microsoft YaHei',sans-serif" fill="#DCC9A4">包衣机 · 糖衣这样裹上去</text>
+      </g>
+
+      <!-- ⑥ 观众剪影（撑住空间感） -->
+      <g fill="#0A0807" opacity=".86">
+        <g transform="translate(646 646)">
+          <circle r="30"/><path d="M-46 168 C-46 76 -30 42 0 42 C30 42 46 76 46 168 Z"/>
+        </g>
+        <g transform="translate(1180 662)">
+          <circle r="26"/><path d="M-40 150 C-40 68 -26 38 0 38 C26 38 40 68 40 150 Z"/>
+        </g>
+        <g transform="translate(2560 652)">
+          <circle r="28"/><path d="M-44 160 C-44 72 -28 40 0 40 C28 40 44 72 44 160 Z"/>
+        </g>
+        <g transform="translate(3130 666)">
+          <circle r="25"/><path d="M-39 146 C-39 66 -25 36 0 36 C25 36 39 66 39 146 Z"/>
+        </g>
+      </g>
+      <g fill="#000" opacity=".34">
+        <ellipse cx="646" cy="812" rx="60" ry="10"/><ellipse cx="1180" cy="812" rx="52" ry="9"/>
+        <ellipse cx="2560" cy="812" rx="56" ry="10"/><ellipse cx="3130" cy="812" rx="50" ry="9"/>
+      </g>
+
+      <!-- ⑦ 展柜在地板上的倒影 + 整体暗角 -->
+      <rect x="90" y="694" width="700" height="86" fill="url(#vr-spot)" opacity=".25"/>
+      <rect x="1810" y="694" width="920" height="96" fill="url(#vr-spot)" opacity=".22"/>
+      <rect x="2790" y="694" width="770" height="92" fill="url(#vr-spot)" opacity=".25"/>
+      <rect width="3600" height="900" fill="url(#vr-vig)"/>
+    </g>
+
+    <!-- 糖丸 -->
+    <symbol id="sym-candy" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="56" fill="url(#g-candy)" stroke="rgba(74,58,54,.14)"/>
+      <ellipse cx="43" cy="38" rx="17" ry="12" fill="#FFFFFF" opacity=".6"/>
+    </symbol>
+
+    <!-- 老照片占位（真实照片还没放进 img/ 时显示这个） -->
+    <symbol id="sym-photo" viewBox="0 0 240 180">
+      <rect x="4" y="4" width="232" height="172" rx="14" fill="url(#g-photo)"
+            stroke="rgba(74,58,54,.18)" stroke-width="2"/>
+      <circle cx="76" cy="60" r="16" fill="none" stroke="rgba(74,58,54,.26)" stroke-width="3"/>
+      <path d="M22 150 L92 90 L138 130 L170 106 L218 150 Z" fill="rgba(74,58,54,.09)"
+            stroke="rgba(74,58,54,.22)" stroke-width="2"/>
+    </symbol>
+
+    <!-- 顾方舟肖像（线描占位） -->
+    <symbol id="sym-gu" viewBox="0 0 400 470">
+      <path d="M62 470 C62 388 108 344 200 344 C292 344 338 388 338 470 Z" fill="#FFFFFF" stroke="rgba(74,58,54,.18)" stroke-width="2"/>
+      <path d="M200 344 L172 470" stroke="rgba(74,58,54,.14)" stroke-width="2" fill="none"/>
+      <path d="M200 344 L228 470" stroke="rgba(74,58,54,.14)" stroke-width="2" fill="none"/>
+      <rect x="170" y="286" width="60" height="66" rx="18" fill="#EFDACE"/>
+      <ellipse cx="124" cy="216" rx="13" ry="21" fill="#F2DFD3"/>
+      <ellipse cx="276" cy="216" rx="13" ry="21" fill="#F2DFD3"/>
+      <ellipse cx="200" cy="208" rx="78" ry="92" fill="#F7E6DC"/>
+      <path d="M122 200 C120 132 156 100 200 100 C244 100 280 132 278 200 C272 164 246 142 200 142 C154 142 128 164 122 200 Z" fill="#6E625C"/>
+      <path d="M132 178 C142 152 162 138 182 134" stroke="#8C8078" stroke-width="2" fill="none" opacity=".75"/>
+      <path d="M152 184 C162 178 176 178 186 183" stroke="#5A4F4C" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M214 183 C224 178 238 178 248 184" stroke="#5A4F4C" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="170" cy="212" rx="5" ry="4.5" fill="#4A3E3A"/>
+      <ellipse cx="230" cy="212" rx="5" ry="4.5" fill="#4A3E3A"/>
+      <rect x="146" y="192" width="48" height="40" rx="10" fill="rgba(255,255,255,.42)" stroke="#4A3E3A" stroke-width="3"/>
+      <rect x="206" y="192" width="48" height="40" rx="10" fill="rgba(255,255,255,.42)" stroke="#4A3E3A" stroke-width="3"/>
+      <path d="M194 208 L206 208" stroke="#4A3E3A" stroke-width="3"/>
+      <path d="M146 206 L124 210" stroke="#4A3E3A" stroke-width="3"/>
+      <path d="M254 206 L276 210" stroke="#4A3E3A" stroke-width="3"/>
+      <path d="M200 218 C196 236 194 244 204 248" stroke="#D8BCAF" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M180 266 C192 278 208 278 220 266" stroke="#C08A7E" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- 迷你尺子：0–4（辨一辨 / 两种量法 用）
+         0 刻度在 x=30，每 1 厘米 = 60，所以 0 在 10%、每厘米 20% -->
+    <symbol id="sym-ruler4" viewBox="0 0 300 84">
+      <rect x="1" y="1" width="298" height="82" rx="12" fill="#F8F2EA"
+            stroke="rgba(74,58,54,.22)" stroke-width="2"/>
+      <rect x="1" y="1" width="298" height="9" rx="4" fill="#EFE4D8"/>
+      <line x1="30" y1="22" x2="30" y2="52" stroke="rgba(74,58,54,.55)" stroke-width="3"/>
+      <line x1="60" y1="30" x2="60" y2="52" stroke="rgba(74,58,54,.38)" stroke-width="2"/>
+      <line x1="90" y1="22" x2="90" y2="52" stroke="rgba(74,58,54,.55)" stroke-width="3"/>
+      <line x1="120" y1="30" x2="120" y2="52" stroke="rgba(74,58,54,.38)" stroke-width="2"/>
+      <line x1="150" y1="22" x2="150" y2="52" stroke="rgba(74,58,54,.55)" stroke-width="3"/>
+      <line x1="180" y1="30" x2="180" y2="52" stroke="rgba(74,58,54,.38)" stroke-width="2"/>
+      <line x1="210" y1="22" x2="210" y2="52" stroke="rgba(74,58,54,.55)" stroke-width="3"/>
+      <line x1="240" y1="30" x2="240" y2="52" stroke="rgba(74,58,54,.38)" stroke-width="2"/>
+      <line x1="270" y1="22" x2="270" y2="52" stroke="rgba(74,58,54,.55)" stroke-width="3"/>
+      <text x="30" y="74" text-anchor="middle" font-size="20" font-weight="600" fill="#5A4F4C">0</text>
+      <text x="90" y="74" text-anchor="middle" font-size="20" font-weight="600" fill="#5A4F4C">1</text>
+      <text x="150" y="74" text-anchor="middle" font-size="20" font-weight="600" fill="#5A4F4C">2</text>
+      <text x="210" y="74" text-anchor="middle" font-size="20" font-weight="600" fill="#5A4F4C">3</text>
+      <text x="270" y="74" text-anchor="middle" font-size="20" font-weight="600" fill="#5A4F4C">4</text>
+    </symbol>
+    <!-- 卡通顾方舟（白大褂，手里拿着尺子） -->
+    <!-- 卡通顾方舟（手里拿着尺子）—— 上面叠的是从素材里抠出来的爷爷形象，
+         文件没了就露出下面这张手绘线稿（img/顾方舟形象.png） -->
+    <symbol id="sym-gu-cartoon" viewBox="0 0 260 320">
+      <path d="M38 320 C38 238 78 204 130 204 C182 204 222 238 222 320 Z" fill="#FFFFFF"
+            stroke="rgba(74,58,54,.2)" stroke-width="2.5"/>
+      <path d="M130 204 L130 320" stroke="rgba(74,58,54,.16)" stroke-width="2"/>
+      <path d="M106 212 L130 246 L154 212" fill="none" stroke="rgba(74,58,54,.2)" stroke-width="2.5"/>
+      <circle cx="130" cy="146" r="62" fill="#F7E6DC" stroke="rgba(74,58,54,.18)" stroke-width="2"/>
+      <path d="M74 128 C74 84 100 62 130 62 C160 62 186 84 186 128 C178 102 158 88 130 88 C102 88 82 102 74 128 Z" fill="#6E625C"/>
+      <circle cx="108" cy="146" r="5" fill="#4A3E3A"/>
+      <circle cx="152" cy="146" r="5" fill="#4A3E3A"/>
+      <path d="M112 174 C122 184 138 184 148 174" stroke="#C08A7E" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <rect x="168" y="252" width="86" height="28" rx="7" fill="#F8F2EA" stroke="rgba(74,58,54,.28)" stroke-width="2"/>
+      <line x1="180" y1="258" x2="180" y2="272" stroke="rgba(74,58,54,.4)" stroke-width="2"/>
+      <line x1="192" y1="260" x2="192" y2="272" stroke="rgba(74,58,54,.28)" stroke-width="2"/>
+      <line x1="204" y1="258" x2="204" y2="272" stroke="rgba(74,58,54,.4)" stroke-width="2"/>
+      <line x1="216" y1="260" x2="216" y2="272" stroke="rgba(74,58,54,.28)" stroke-width="2"/>
+      <line x1="228" y1="258" x2="228" y2="272" stroke="rgba(74,58,54,.4)" stroke-width="2"/>
+      <line x1="240" y1="260" x2="240" y2="272" stroke="rgba(74,58,54,.28)" stroke-width="2"/>
+    </symbol>
+
+    <!-- 食指的宽度 ≈ 1 厘米（P15 用） -->
+    <symbol id="sym-finger" viewBox="0 0 300 320">
+      <rect x="90" y="60" width="120" height="260" rx="60" fill="#EFD9C6"
+            stroke="rgba(101,74,42,.35)" stroke-width="3"/>
+      <ellipse cx="150" cy="104" rx="34" ry="42" fill="#F8EADF"
+               stroke="rgba(101,74,42,.28)" stroke-width="2.5"/>
+      <path d="M96 176 C120 186 180 186 204 176" stroke="rgba(101,74,42,.22)" stroke-width="2.5" fill="none"/>
+      <path d="M96 214 C120 224 180 224 204 214" stroke="rgba(101,74,42,.16)" stroke-width="2.5" fill="none"/>
+      <!-- 1 厘米的标注 -->
+      <line x1="90" y1="34" x2="210" y2="34" stroke="#9C4B33" stroke-width="3"/>
+      <line x1="90" y1="22" x2="90" y2="48" stroke="#9C4B33" stroke-width="3"/>
+      <line x1="210" y1="22" x2="210" y2="48" stroke="#9C4B33" stroke-width="3"/>
+      <text x="150" y="18" text-anchor="middle" font-size="24" font-weight="600" fill="#9C4B33"
+            font-family="Georgia,serif">1 厘米</text>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="deck">
+
+  <!-- ============ P1 封面 ============
+       学生进场时投着，不参与教学。 -->
+  <section class="slide cover" data-mood="old" data-cover-crease data-title="封面">
+    <div class="cover-inner tc">
+      <h1 class="h1 anim-rise-in" data-anim="rise-in">糖丸做多大呢？</h1>
+      <div class="ruler-band cover-band"></div>
+      <p class="cover-sub">滨江小学　薛景</p>
+    </div>
+    <aside class="notes">
+      <p>（封面上是课题和你的名字。学生进场、坐定的时候投着。）</p>
+      <p>（不说话。上课铃响后，按一下方向键进入下一页。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P2 糖丸特写 ============
+       全课第一屏画面：先出示实物模型，不先放照片。 -->
+  <section class="slide center tc" data-mood="gray" data-scope data-title="糖丸特写">
+    <div style="max-width:1120px">
+      <div class="candy-hero hit" data-toggle=".p2-story" role="button" tabindex="0"
+           aria-label="点一点这颗糖丸">
+        <span class="tap-halo" aria-hidden="true"></span>
+        <svg class="candy-art" viewBox="0 0 120 120" aria-hidden="true"><use href="#sym-candy"/></svg>
+        <span class="tap-hand" aria-hidden="true">👆</span>
+      </div>
+      <p class="big-q js-box p2-story mt-m">这颗糖丸里藏着一个故事</p>
+    </div>
+    <aside class="notes">
+      <p>（先出示<strong>实物糖丸模型</strong>，传给学生看一看、摸一摸。屏幕上是它的大特写。）</p>
+      <p>同学们，这颗糖丸可不是普通的糖。它是一位爷爷送给全中国小朋友的<strong>“健康礼物”</strong>。</p>
+      <p>它背后藏着一个真实的故事——让我们把时间倒回 1955 年。</p>
+      <p>（点一下糖丸，让这句话浮出来。别急着往下翻，让实物在手里多停一会儿。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P3 黑场 · 1955（打字机两行 + 点一下出当年的影像）============ -->
+  <section class="slide dark center tc" data-mood="dark" data-no-audio data-title="1955 年">
+    <div class="black-lines" data-scope>
+      <p class="bl-1"><span class="anim-typewriter" data-anim="typewriter">1955 年　南通</span></p>
+      <p class="bl-2"><span class="anim-typewriter" data-anim="typewriter">一种“可怕的病毒”来了。</span></p>
+      <p class="tap-hint bl-hint hit" data-toggle=".bl-video">点一下，看当年那段影像</p>
+      <figure class="video-fig js-box bl-video">
+        <div class="video" data-video>
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+          </div>
+          <video src="video/nantong-1955b.mp4" poster="video/nantong-1955b.jpg"
+                 playsinline preload="metadata" controls
+                 onerror="this.classList.add('miss')"></video>
+        </div>
+      </figure>
+    </div>
+    <aside class="notes">
+      <p>（<strong>不说话</strong>。压低声音，停顿，让黑场和这两行字自己说话。）</p>
+      <p>两行字打完，点一下屏幕把当年的影像放出来，看完再按方向键往下翻。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P4 顾方舟 ============ -->
+  <section class="slide" data-mood="warm" data-scope data-title="顾方舟">
+    <div class="person person-big">
+      <figure class="photo-fig hit" data-toggle=".p5-quote" role="button" tabindex="0"
+              aria-label="点一点照片，看看他说了什么">
+        <div class="photo ratio-4x5 portrait-cut">
+          <div class="ph-fallback">
+            <img class="ph-figure" src="img/顾方舟头像.png" alt="顾方舟"
+                 onerror="this.classList.add('miss')">
+            <span class="ph-note">真实照片放进来就会自动替换：<b>img/gufangzhou.jpg</b></span>
+          </div>
+          <img src="img/gufangzhou.jpg" alt="顾方舟的工作照" onerror="this.classList.add('miss')">
+        </div>
+      </figure>
+      <div>
+        <p class="lede">他叫顾方舟，他把一句话，写在了心里。</p>
+        <p class="tap-hint mt-l">点一点照片，看看他说了什么</p>
+        <p class="big-q js-box p5-quote mt-m">“我要把这个病，<br>从中国消灭掉。”</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>就在那一年，一位年轻人从苏联学成回国。他叫<strong>顾方舟</strong>。</p>
+      <p>他把这句话写在了心里。我们一起来读——</p>
+      <p>（点开照片，带全班跟读）<strong>“我要把这个病，从中国消灭掉。”</strong></p>
+    </aside>
+  </section>
+
+  <!-- ============ P5 三选一 ============ -->
+  <section class="slide" data-mood="calm" data-scope data-title="三个办法">
+    <p class="kicker big-head">第一站 · 顾爷爷面前的三个办法</p>
+    <div class="choice-grid" data-pick>
+      <div class="choice hit" data-toggle=".why-needle">
+        <span class="stamp bad">走不通</span>
+        <div class="icon">💉</div>
+        <h4>打针</h4>
+        <p>要有医生、要有针管，还得冷藏。</p>
+        <p class="js-box why-needle mt-s">山里的孩子打不上。</p>
+      </div>
+      <div class="choice hit" data-toggle=".why-liquid">
+        <span class="stamp bad">走不通</span>
+        <div class="icon">🧪</div>
+        <h4>药水</h4>
+        <p>液体疫苗又重、又怕冻。</p>
+        <p class="js-box why-liquid mt-s">药还是苦的，孩子喝一口就吐了。</p>
+      </div>
+      <div class="choice hit ok" data-toggle=".why-candy">
+        <span class="stamp good">他选了这个</span>
+        <div class="icon">
+          <svg class="candy-icon" viewBox="0 0 120 120" aria-hidden="true"><use href="#sym-candy"/></svg>
+        </div>
+        <h4>糖丸</h4>
+        <p>裹上一层糖，香香甜甜。</p>
+        <p class="js-box why-candy mt-s">不怕热、好运送，小朋友还肯吃。</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>打针要医生、要针管，还得冷藏，山里的孩子打不上。</p>
+      <p>药水又苦又凉，孩子喝一口就吐了。</p>
+      <p>（点三张卡片，一个一个看。前两张盖“走不通”的章。）</p>
+      <p>那怎么办？（先让学生猜，再点开第三张）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P6 大字问句 ============ -->
+  <section class="slide center tc" data-mood="warm" data-scope data-title="糖丸做多大">
+    <div style="max-width:1320px">
+      <svg class="candy-art candy-art-sm anim-zoom-pop" data-anim="zoom-pop"
+           viewBox="0 0 120 120" aria-hidden="true"><use href="#sym-candy"/></svg>
+      <p class="big-q ask-line mt-m">糖丸，做多大才合适？</p>
+      <div class="js-box p7-more mt-m">
+        <p class="qmark" aria-hidden="true">？</p>
+        <p class="lede" style="margin:0 auto">做太大，卡嗓子；做太小，药量不够。</p>
+      </div>
+      <p class="tap-hint mt-l hit" data-toggle=".p7-more">点一下</p>
+    </div>
+    <aside class="notes">
+      <p>（故作神秘）做太大，卡嗓子；做太小，药量不够。到底做多大呢？</p>
+      <p>今天，你们就是<strong>顾爷爷的小研究员</strong>。</p>
+      <p>齐读问题：糖丸，做多大才合适？</p>
+      <p>【板书课题】<strong>糖丸做多大呢？</strong>（认识厘米）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P7 先得有把尺子 ============ -->
+  <section class="slide text-big p7-big" data-mood="warm" data-scope data-title="先得有把尺子">
+    <div class="person person-big">
+      <!-- 人物抠图撑满图像框；底下原来那层手绘稿不要了（2026-10-11） -->
+      <figure class="photo-fig person-fill">
+        <div class="photo ratio-3x4 portrait-cut">
+          <div class="ph-fallback">
+            <img class="ph-figure" src="img/顾方舟形象.png" alt="顾方舟"
+                 onerror="this.classList.add('miss')">
+          </div>
+        </div>
+      </figure>
+      <div>
+        <p class="kicker">第二站 · 糖丸该用什么量</p>
+        <div class="say">
+          <p class="say-line">小研究员们，要定大小，先得有把尺子。</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>要定大小，先得有把尺子。</p>
+      <p>（点气泡，让第二句浮出来）请把你自己的直尺拿出来，举起来给老师看看。</p>
+      <p>从这一页起，尺子就要一直在手边，后面的每一关都要用它。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P8 认识直尺 ============
+       点击条 → 尺子上对应的位置亮一个圈。 -->
+  <section class="slide text-big" data-mood="calm" data-scope data-title="认识直尺">
+    <p class="kicker">第二站 · 认识我们的工具</p>
+    <h2 class="h2">直尺上，藏着什么？</h2>
+    <div class="ruler-box">
+      <div class="rb">
+        <svg class="ruler-svg" data-ruler="15" data-ruler-noseg
+             data-ruler-zero data-ruler-zero-label="0 刻度线"
+             data-ruler-cm data-ruler-cm-label="厘米"
+             data-ruler-num data-ruler-num-label="数字"></svg>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>请把尺子拿在手里，仔细观察，尺子上都有什么？和同桌说一说。</p>
+      <p>（点三个条，一个一个亮圈）有<strong>数字</strong> 0、1、2、3……；有一条条线，叫<strong>刻度线</strong>；还有两个字母 <strong>cm</strong>。</p>
+      <p>全班交流：尺子上有数字、有刻度线、还有 cm。cm 是厘米的国际符号，看到 cm 就读厘米。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P9 为什么定 1 厘米 ============ -->
+  <section class="slide" data-mood="warm" data-scope data-title="为什么是 1 厘米">
+    <div class="person person-big">
+      <!-- 这一页也放顾爷爷的形象（跟第 7 页同样的处理：人物抠图撑满图像框） -->
+      <figure class="photo-fig person-fill hit" data-toggle=".p11-say" role="button" tabindex="0"
+              aria-label="点一下顾爷爷，看他的答案">
+        <div class="photo ratio-3x4 portrait-cut">
+          <div class="ph-fallback">
+            <img class="ph-figure" src="img/顾方舟形象.png" alt="顾方舟"
+                 onerror="this.classList.add('miss')">
+          </div>
+        </div>
+      </figure>
+      <div>
+        <h2 class="h2">糖丸，到底做多大？</h2>
+        <div class="say mt-m">
+          <p class="say-line">先猜一猜：太大不行，太小也不行，那到底做多大？</p>
+          <p class="js-box p11-say mt-s">“我们试了又试，糖丸定在——<strong>直径 1 厘米</strong>。”</p>
+          <p class="js-box p11-say mt-s">一口能吞下，不卡嗓子 —— 这就是为什么是 1 厘米。</p>
+        </div>
+        <p class="tap-hint mt-l">点一下顾爷爷，看他的答案</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>爷爷试了又试，糖丸定在<strong>直径 1 厘米</strong>。为什么是这个数？你们猜猜看。</p>
+      <p>（让学生猜，猜完<strong>点一下屏幕上的顾爷爷</strong>）一口就能吞下、不卡嗓子——这是一个<strong>工程上的决定</strong>，也是数学上的数。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P10 找 1 厘米（2026-10-11 从"认识直尺"里拆出来的新页）============ -->
+  <section class="slide text-big" data-mood="calm" data-title="找 1 厘米">
+    <p class="kicker">第二站 · 在尺子上找 1 厘米</p>
+    <h2 class="h2">哪一段是 1 厘米？</h2>
+    <div class="ruler-box">
+      <div class="rb">
+        <!-- 点一段出「1 厘米」，只亮这一段；点过的段数够多，下面的结论一句一句出来 -->
+        <svg class="ruler-svg" data-ruler="15"></svg>
+      </div>
+    </div>
+    <p class="lede js-box mt-m" data-reveal-at="2">从 0 到 1、从 1 到 2、从 3 到 4……每一段都一样长。</p>
+    <p class="big-q js-box mt-m" data-reveal-at="5">相邻两个数字之间，都是 1 厘米</p>
+    <p class="verdict good js-box mt-m" data-reveal-at="15">15 个 1 厘米手拉手 ＝ 一把 15 厘米的尺子</p>
+    <aside class="notes">
+      <p>1 厘米到底有多长？在尺子上找一找，从几到几是 1 厘米？（请学生上台点，点亮的不要取消，让它们留在屏幕上）</p>
+      <p>点哪一段都行——0 到 1、1 到 2、3 到 4……点出来的都是 <strong>1 厘米</strong>。</p>
+      <p>那从 3 到 4 呢？从 9 到 10 呢？比一比，这些是不是一样长？</p>
+      <p>再数一数：你的尺子上一共有多少个 1 厘米？——<strong>15 个</strong>。全班齐数。</p>
+      <p>说出这句话：一把 15 厘米的尺子，就是由 15 个 1 厘米一个接一个连起来的。</p>
+      <p>【板书】相邻两个数字之间 ＝ 1 厘米；15 个 1 厘米手拉手 ＝ 一把 15 厘米的尺子</p>
+    </aside>
+  </section>
+
+  <!-- ============ P11 糖丸落在 0 到 1 之间 ============
+       全课第一个核心动作：把尺子拖过去，0 刻度对齐糖丸的左边。 -->
+  <section class="slide" data-mood="calm" data-title="量出 1 厘米">
+    <p class="kicker">第三站 · 用尺子试一试</p>
+    <h2 class="h2" style="font-size:44px">把尺子拖过去，让 0 刻度贴住糖丸的左边</h2>
+    <div class="measure-stage" data-measure>
+      <div class="meas-hint">按住尺子往右拖 —— 让 0 刻度贴住糖丸的左边</div>
+      <div class="snap-line"></div>
+      <div class="seg-glow" aria-hidden="true"></div>
+      <div class="meas-object"></div>
+      <div class="meas-obj-cap">糖丸</div>
+      <div class="meas-ruler" data-drag-ruler="3"></div>
+      <div class="meas-result">
+        <div class="v">1 厘米</div>
+        <div class="t">0 到 1 这一段，<br>就是 1 厘米</div>
+      </div>
+    </div>
+    <p class="lede mt-m">0 到 1 是 1 厘米。</p>
+    <aside class="notes">
+      <p>把尺子拖过去，让 <strong>0 刻度正好对着糖丸的左边</strong>。（请一位学生上台拖）</p>
+      <p>看，糖丸的直径就是这一段——<strong>0 到 1，1 厘米</strong>。</p>
+      <p>追一句：如果 0 刻度没有对准左边，量出来的数还准吗？（不准。所以才有刚才那一句“0 是起点”。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P12 捏住 1 厘米 ============ -->
+  <section class="slide" data-mood="calm" data-title="记住 1 厘米">
+    <p class="kicker">第三站 · 把 1 厘米记在手上</p>
+    <h2 class="h2">用两个手指，捏住这一段</h2>
+    <div class="pinch" data-pinch>
+      <div class="pinch-stage">
+        <div class="fingers">
+          <div class="finger-tip l"></div>
+          <div class="finger-tip r"></div>
+        </div>
+        <div class="gap-mark"></div>
+        <div class="gap-cap">指缝里的距离，就是 1 厘米</div>
+        <div class="stick-1cm"></div>
+      </div>
+      <div>
+        <p class="lede">捏住，再把它轻轻抽走。</p>
+        <p class="lede mt-s">手指别动 —— 两指之间留下的距离，就是 <span class="hl">1 厘米</span>。</p>
+        <p class="lede mt-s dim">以后想不起来 1 厘米有多长，就比一比这个手势。</p>
+        <button class="btn mt-l" data-pinch-go>抽走小棒</button>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>用大拇指和食指对准尺子上的 0 和 1，轻轻握住，再把尺子拿走。</p>
+      <p>（点按钮）看你的两指之间——<strong>留下来的这个距离，就是 1 厘米</strong>。</p>
+      <p>闭眼想一想，睁眼再比一比，同桌用尺子互相检查准不准。</p>
+      <p>这个手势，后面每一站都要用，请一直记到下课。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P13 1 厘米百宝盒 ============
+       小组活动页：估一估 → 量一量 → 分一分 → 放回。 -->
+  <section class="slide bag-big" data-mood="warm" data-title="1 厘米百宝盒">
+    <p class="kicker">第三站 · 小组活动</p>
+    <h2 class="h2">1 厘米百宝盒：估一估，量一量</h2>
+    <p class="lede mt-s">分工合作：估一估 → 量一量 → 分一分 → 放回。</p>
+    <div class="sort mt-m" data-sort>
+      <div class="sort-pool">
+        <button class="sort-item" data-fit="yes" data-reason="衬衣上的小纽扣，直径差不多就是 1 厘米。"
+          data-say="约 1 厘米">
+          <span class="item-pic i-btn">
+            <img class="item-img" src="img/物品-小纽扣.jpg" alt=""
+                 onerror="this.classList.add('miss')"></span><span>小纽扣</span>
+        <button class="sort-item" data-fit="yes" data-reason="七号电池的直径，大约就是 1 厘米。"
+          data-say="约 1 厘米">
+          <span class="item-pic i-aaa">
+            <img class="item-img" src="img/物品-七号电池.jpg" alt=""
+                 onerror="this.classList.add('miss')"></span><span>七号电池</span>
+        <button class="sort-item" data-fit="no" data-reason="黄豆大约 0.8 厘米，比 1 厘米短一点。"
+          data-say="不是">
+          <span class="item-pic i-soy">
+            <img class="item-img" src="img/物品-黄豆.jpg" alt=""
+                 onerror="this.classList.add('miss')"></span><span>黄豆</span>
+        <button class="sort-item" data-fit="no" data-reason="一角硬币的直径大约 1.9 厘米，比 1 厘米长。"
+          data-say="不是">
+          <span class="item-pic i-jiao">
+            <img class="item-img" src="img/物品-一角硬币.jpg" alt=""
+                 onerror="this.classList.add('miss')"></span><span>一角硬币</span>
+        <button class="sort-item" data-fit="no" data-reason="纽扣电池的直径大约 2 厘米，比 1 厘米长得多。"
+          data-say="不是">
+          <span class="item-pic i-cell">
+            <img class="item-img" src="img/物品-纽扣电池.jpg" alt=""
+                 onerror="this.classList.add('miss')"></span><span>纽扣电池</span>
+      </div>
+      <div class="sort-bins">
+        <div class="bin bin-yes" data-bin="yes">
+          <span class="bin-h">大约 1 厘米</span>
+          <div class="bin-body"></div>
+        </div>
+        <div class="bin bin-no" data-bin="no">
+          <span class="bin-h">不是 1 厘米</span>
+          <div class="bin-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="sort-say" data-sort-say>先估一估，再点一点，看看它是不是大约 1 厘米。</p>
+    <p class="verdict good js-box mt-m">这些大约 1 厘米的小东西，就是我们的“1 厘米小助手”。</p>
+    <aside class="notes">
+      <p>（活动前先分工）组长负责领盒、组织活动；测量员负责用尺量；记录员负责记录结果；汇报员代表小组发言。人人参与、轮流动手，不争不抢，轻拿轻放。</p>
+      <p>（小组动手约 3 分钟：估一估、量一量，把盒里的东西分成“大约 1 厘米”和“不是 1 厘米”两堆。）</p>
+      <p>（汇报时逐个点开）这些大约 1 厘米的小东西，就是我们的<strong>“1 厘米小助手”</strong>。</p>
+      <p>（下一页再说）其实我们的身体里也藏着 1 厘米——你食指的宽度，大约就是 1 厘米。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P14 身体里藏着 1 厘米（2026-10-11 从"百宝盒"里拆出来的新页）============ -->
+  <section class="slide finger-page" data-mood="warm" data-title="身体里的 1 厘米">
+    <p class="kicker finger-title">第三站 · 身体里也藏着 1 厘米</p>
+    <div class="finger-box finger-hero mt-l">
+      <svg class="finger-art" viewBox="0 0 300 320" aria-hidden="true"><use href="#sym-finger"/></svg>
+      <p class="finger-cap">食指的宽度，大约就是 1 厘米。<br>
+        <span class="dim">以后想不起来 1 厘米有多长，就比一比这根手指。</span></p>
+    </div>
+    <aside class="notes">
+      <p>（举起手）我们的身体里也藏着一把尺子——你食指的宽度，大约就是 <strong>1 厘米</strong>。</p>
+      <p>全班一起比一比：食指竖起来，看看它的宽度。（同桌互查）</p>
+      <p>这一页很短，一句话就够——记住这个"随身尺子"，比记数字管用。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P15 1 厘米累加 ============ -->
+  <section class="slide" data-mood="calm" data-scope data-title="几个 1 厘米">
+    <p class="kicker">第四站 · 认识几厘米</p>
+    <h2 class="h2">几个 1 厘米，就是几厘米</h2>
+    <div class="ruler-box">
+      <div class="rb">
+        <!-- 一段一段点：点一段亮 1 厘米，点它旁边的一段就合起来变成 2 厘米……最多到 10 厘米 -->
+        <svg class="ruler-svg" data-ruler="10" data-ruler-count></svg>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>先在尺子上随便点一段——这就是 <strong>1 厘米</strong>（屏幕上方会写出「1 厘米」）。</p>
+      <p>再点它<strong>旁边</strong>的那一段：两段合起来，上面就变成「2 厘米」。再点旁边一段，就是 3 厘米……一直点到 10 厘米。</p>
+      <p>（请两三位学生上台，一人点一段。学生一边点，老师一边问：现在是几厘米？里面有几个 1 厘米？）</p>
+      <p>小结：<strong>几个 1 厘米接起来，就是几厘米。</strong>【板书】几个 1 厘米 → 几厘米</p>
+    </aside>
+  </section>
+
+  <!-- ============ P16 从 3 到 8 ============ -->
+  <section class="slide" data-mood="calm" data-title="从 3 到 8">
+    <p class="kicker">第四站 · 换个起点</p>
+    <h2 class="h2">从 3 到 8，是几厘米？</h2>
+    <div class="ruler-box">
+      <div class="rb">
+        <!-- 紫色条子可以拖：自动吸到最近的整厘米，下面的那句话跟着变 -->
+        <svg class="ruler-svg" data-ruler="10" data-ruler-demo="3-8" data-ruler-demo-say></svg>
+      </div>
+    </div>
+    <p class="lede js-box mt-l" data-ruler-demo-say>从 3 到 8，也是 5 厘米。</p>
+    <p class="tap-hint mt-m">把紫色条子拖一拖 —— 拖好之后点一下尺子，看它是几厘米</p>
+    <aside class="notes">
+      <p>咦，从 3 到 8 也是 5 厘米？数一数，里面有几个 1 厘米？</p>
+      <p>（<strong>拖动紫色条子</strong>）拖到别处再看看——从 2 到 7，还是 5 厘米；从 0 到 5，也是 5 厘米。</p>
+      <p>（点尺子）3 到 4、4 到 5、5 到 6、6 到 7、7 到 8——<strong>5 个 1 厘米，就是 5 厘米</strong>。</p>
+      <p>齐数 1 到 5。说出这一句：不管从刻度几开始，包含几个 1 厘米，就是几厘米。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P17 糖丸生产线 ============ -->
+  <section class="slide" data-mood="warm" data-title="糖丸生产线">
+    <p class="kicker">第四站 · 排一排</p>
+    <h2 class="h2">生产线上，把糖丸一颗一颗排起来</h2>
+    <div class="draw-stage" data-draw data-u="165">
+      <div class="draw-ruler">
+        <button type="button" class="draw-pencil hit" data-draw-go data-cm="10"
+                aria-label="点一下铅笔，把 10 颗糖丸排上去"
+                onclick="this.closest('.draw-stage').dispatchEvent(new CustomEvent('rcm-draw',{bubbles:true}))"
+                >✏️</button>
+        <div class="draw-line"></div>
+        <div class="draw-ticks"></div>
+        <div class="candies"></div>
+      </div>
+      <div class="row" style="gap:22px;align-items:center;margin-top:26px">
+        <button class="btn" data-draw-go data-cm="10">把糖丸排上去</button>
+        <p class="js-box" data-draw-out style="font-size:24px;margin:0">
+          第 1 颗对着 1，第 2 颗对着 2……第 <b>10</b> 颗对着 10。<br>
+          <b>10 颗 ＝ 10 厘米。</b></p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>糖丸厂的生产线也是这样：把一颗一颗 1 厘米的糖丸排起来。</p>
+      <p>（点按钮，看糖丸一颗一颗排上去）第 1 颗对着 1，第 2 颗对着 2……第 10 颗对着 10。</p>
+      <p>10 颗就是——10 厘米。全班齐答。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P18 检验任务 ============ -->
+  <section class="slide" data-mood="cold" data-scope data-title="检验任务">
+    <p class="kicker">第五站 · 检验糖丸合不合格</p>
+    <h2 class="h2">每颗糖丸，都要量一量</h2>
+    <div class="map-wrap mt-m">
+      <figure class="photo-fig p18-photo">
+        <div class="photo ratio-3x4">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note">真实老照片放进来就会自动替换：<b>img/gongchang-1960.jpg</b></span>
+          </div>
+          <img src="img/gongchang-1960.jpg" alt="1958 年疫苗包装车间的女工"
+               onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">老照片 · 疫苗包装车间，1958 年</figcaption>
+      </figure>
+      <div>
+        <div class="say hit" data-toggle=".p19-say" role="button" tabindex="0" aria-label="点一下气泡">
+          <p class="say-line">糖丸做出来了。可是——</p>
+          <p class="js-box p19-say mt-s">每颗糖丸都要量一量：是不是正好 1 厘米？</p>
+        </div>
+        <p class="tap-hint mt-l hit" data-toggle=".p19-say">点一下气泡，接下任务</p>
+        <p class="lede mt-m">那就先学会：用尺子量。</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>糖丸做出来了，每一颗都要检验——是不是正好 1 厘米？</p>
+      <p>（点气泡，接下任务）那就先学会用尺量。你们都是检验员。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P19 两种量法 ============ -->
+  <section class="slide" data-mood="cold" data-scope data-title="两种量法">
+    <p class="kicker">第五站 · 哪种放法更放心</p>
+    <h2 class="h2" style="font-size:44px">量一块橡皮，两种放法，对着的都是 4</h2>
+    <div class="diag-grid mt-m">
+      <div class="diag-card hit" data-toggle=".p20-a">
+        <p class="diag-t">放法一</p>
+        <div class="diag">
+          <svg class="diag-ruler" viewBox="0 0 300 84" aria-hidden="true"><use href="#sym-ruler4"/></svg>
+          <span class="diag-obj" style="--x:0%;--w:90%;--y:58%"></span>
+        </div>
+        <p class="diag-cap">左端，没有对着 0 刻度线</p>
+        <p class="js-box p20-a mt-s">对着 4，可它不是 4 厘米——左边还空着一截没算进去。</p>
+      </div>
+      <div class="diag-card hit" data-toggle=".p20-b">
+        <p class="diag-t">放法二</p>
+        <div class="diag">
+          <svg class="diag-ruler" viewBox="0 0 300 84" aria-hidden="true"><use href="#sym-ruler4"/></svg>
+          <span class="diag-obj" style="--x:10%;--w:80%;--y:58%"></span>
+        </div>
+        <p class="diag-cap">左端对准 0，右端对着 4</p>
+        <p class="js-box p20-b mt-s">从 0 开始数，对着几就是几厘米，不用再数。</p>
+      </div>
+    </div>
+    <p class="verdict good mt-m">对准 0 刻度线，直接读右边。</p>
+    <aside class="notes">
+      <p>我们先看大屏幕：小研究员是怎样量一块橡皮的。两种放法，对着的都是 4。</p>
+      <p>哪种放法更放心？（先让学生举手，再点开两块卡片）</p>
+      <p>追问：为什么要对准 0 刻度线？——对准 0，从 0 开始数，对着几就是几厘米，不用多数。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P20 测量三要点 ============ -->
+  <section class="slide" data-mood="cold" data-scope data-title="测量三要点">
+    <p class="kicker">第五站 · 量法要点</p>
+    <h2 class="h2">量长度，记住三句话</h2>
+    <div class="steps3">
+      <div class="step3 hit" data-toggle=".p21-1">
+        <div class="n">1</div><h4>放正</h4>
+        <p>尺子放平、放正，贴着要量的东西。</p>
+        <p class="js-box p21-1 mt-s">放斜了，量出来就比实际长。</p>
+      </div>
+      <div class="step3 hit" data-toggle=".p21-2">
+        <div class="n">2</div><h4>对「0」</h4>
+        <p>0 刻度，对准物体的左端。</p>
+        <p class="js-box p21-2 mt-s">对准的是 0，不是 1。</p>
+      </div>
+      <div class="step3 hit" data-toggle=".p21-3">
+        <div class="n">3</div><h4>读数</h4>
+        <p>右端对着哪个数字，就是几厘米。</p>
+        <p class="js-box p21-3 mt-s">读出数，写上单位。</p>
+      </div>
+    </div>
+    <p class="big-q mt-l">一放正　二对「0」　三读数</p>
+    <aside class="notes">
+      <p>三句话：一<strong>放正</strong>、二<strong>对「0」</strong>、三<strong>读数</strong>。我们一句一句读。</p>
+      <p>（每条点开，说一句为什么）方法学会了，请大家拿出自己的橡皮，用正确的方法量一量它有多长。</p>
+      <p>（学生独立测量，教师巡视。约 2 分钟。）</p>
+      <p>【板书】量法三要点</p>
+    </aside>
+  </section>
+
+  <!-- ============ P21 辨一辨 ============ -->
+  <section class="slide" data-mood="cold" data-scope data-title="辨一辨">
+    <p class="kicker">第五站 · 错在哪儿</p>
+    <h2 class="h2" style="font-size:44px">他们量得对吗？错在哪儿？</h2>
+    <div class="diag-grid diag-grid-3 mt-m">
+      <div class="diag-card">
+        <p class="diag-t">图一</p>
+        <div class="diag">
+          <svg class="diag-ruler" viewBox="0 0 300 84" aria-hidden="true"><use href="#sym-ruler4"/></svg>
+          <span class="diag-obj" style="--x:0%;--w:90%;--y:58%"></span>
+          <span class="diag-mark bad-mark" style="--x:0%;--w:10%">？</span>
+        </div>
+        <div class="judge row" style="gap:12px" data-pick>
+          <button class="choice choice-mini" data-toggle=".p22-1y">√</button>
+          <button class="choice choice-mini" data-toggle=".p22-1n">×</button>
+        </div>
+        <p class="js-box p22-1y mt-s">再想想：左边没有对着 0。</p>
+        <p class="js-box p22-1n mt-s">对！左端没对着 0 刻度线。</p>
+      </div>
+      <div class="diag-card">
+        <p class="diag-t">图二</p>
+        <div class="diag">
+          <svg class="diag-ruler" viewBox="0 0 300 84" aria-hidden="true"><use href="#sym-ruler4"/></svg>
+          <span class="diag-obj diag-obj-tilt" style="--x:10%;--w:80%;--y:48%"></span>
+        </div>
+        <div class="judge row" style="gap:12px" data-pick>
+          <button class="choice choice-mini" data-toggle=".p22-2y">√</button>
+          <button class="choice choice-mini" data-toggle=".p22-2n">×</button>
+        </div>
+        <p class="js-box p22-2y mt-s">再想想：尺子没有放平。</p>
+        <p class="js-box p22-2n mt-s">对！尺子放斜了。</p>
+      </div>
+      <div class="diag-card">
+        <p class="diag-t">图三</p>
+        <div class="diag">
+          <svg class="diag-ruler" viewBox="0 0 300 84" aria-hidden="true"><use href="#sym-ruler4"/></svg>
+          <span class="diag-obj" style="--x:10%;--w:60%;--y:58%"></span>
+          <span class="diag-mark good-mark" style="--x:10%;--w:60%">3 厘米</span>
+        </div>
+        <div class="judge row" style="gap:12px" data-pick>
+          <button class="choice choice-mini" data-toggle=".p22-3y">√</button>
+          <button class="choice choice-mini" data-toggle=".p22-3n">×</button>
+        </div>
+        <p class="js-box p22-3y mt-s">对！又平又准，从 0 数到 3。</p>
+        <p class="js-box p22-3n mt-s">再看看：左端对着 0，右端对着 3。</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>检验台上，几位同学量物体的方法不一样。他们量得对吗？错在哪儿？</p>
+      <p>先不点屏幕——用手势判断：对就 √，错就 ×。（全班举手势）</p>
+      <p>（再点开）图一：没对着 0，错；图二：尺子放斜了，错；图三：又平又准，对。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P22 断尺 ============ -->
+  <section class="slide" data-mood="cold" data-scope data-title="断尺挑战">
+    <p class="kicker">第五站 · 挑战一下</p>
+    <h2 class="h2" style="font-size:44px">尺子断了，0 刻度没了，还能量吗？</h2>
+    <div class="ruler-box">
+      <div class="rb">
+        <svg class="ruler-svg" data-ruler="10" data-ruler-demo="2-7"
+             data-ruler-broken="2" data-ruler-broken-say="断口"></svg>
+      </div>
+    </div>
+    <div class="row wrap mt-l" style="gap:16px">
+      <button class="chip hit" data-toggle=".p23-count">数一数</button>
+      <button class="chip hit" data-toggle=".p23-calc">算一算</button>
+    </div>
+    <p class="js-box p23-count mt-m">2→3、3→4、4→5、5→6、6→7＝ 5 个 1 厘米。</p>
+    <p class="js-box p23-calc mt-s">7 − 2 ＝ 5（厘米）</p>
+    <p class="lede mt-m">5 厘米。</p>
+    <aside class="notes">
+      <p>有同学的尺子断了一截，0 刻度没了。还能量出长度吗？</p>
+      <p>尺子从刻度 2 开始量，另一头对着 7。这条边多长？（给学生两分钟，同桌互相说）</p>
+      <p>（点“数一数”）数出 5 个 1 厘米；也可以（点“算一算”）7 − 2 ＝ 5。两种方法都对。</p>
+      <p>所以尺子断了不可惜——只要知道从几量到几，一样能量。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P23 量糖丸 ============ -->
+  <section class="slide" data-mood="cold" data-title="量糖丸">
+    <p class="kicker">第五站 · 检验这颗糖丸</p>
+    <h2 class="h2" style="font-size:44px">把 0 刻度拖过去，贴住糖丸的左边</h2>
+    <div class="measure-stage" data-measure>
+      <div class="meas-hint">按住尺子往右拖 —— 让 0 刻度贴住糖丸的左边</div>
+      <div class="snap-line"></div>
+      <div class="meas-object"></div>
+      <div class="meas-obj-cap">糖丸</div>
+      <div class="meas-ruler" data-drag-ruler="3"></div>
+      <div class="meas-result">
+        <div class="v">1 厘米</div>
+        <div class="t">合格<br>每颗都做到 1 厘米，药量才一样</div>
+      </div>
+    </div>
+    <p class="lede mt-m">1 厘米 —— 合格。</p>
+    <aside class="notes">
+      <p>我们一起在屏幕上量一量糖丸。把 0 刻度拖过去贴住它的左边，另一头对着几？</p>
+      <p>齐答：1 厘米。（请一位学生上台拖一次）</p>
+      <p>想一想：为什么要每颗都做到 1 厘米？——因为大小一样，药量才一样。这就是数学上的“准”。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P24 情感高点 · 照片 ============
+       这一页屏幕上不放任何文字。灯光压暗，照片自己说话。 -->
+  <section class="slide photo-slide" data-mood="sepia" data-title="1960 年 · 试药">
+    <div class="photo-full anim-blur-in" data-anim="blur-in">
+      <div class="ph-fallback">
+        <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+        <span class="ph-note">真实老照片放进来就会自动替换：<b>img/shiyao-1960.jpg</b></span>
+      </div>
+      <img src="img/shiyao-1960.jpg" alt="1960 年，喂婴儿试药的老照片"
+           onerror="this.classList.add('miss')">
+    </div>
+    <div class="veil" aria-hidden="true"></div>
+    <aside class="notes">
+      <p>但是你们知道吗？1960 年，疫苗刚做出来，谁也不敢第一个给孩子吃。</p>
+      <p>万一疫苗有问题，怎么办？</p>
+      <p>（<strong>屏幕上一句话也不放</strong>。让这张照片停 3 秒，教室里安静下来，再按方向键。）</p>
+      <p>（这一页不提问、不解释。安静，就是这一页的全部内容。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P25 情感高点 · 那句话 ============ -->
+  <section class="slide dark center tc" data-mood="dark" data-scope data-stagger data-title="那句话">
+    <div style="max-width:1560px">
+      <p class="dark-line js-box" style="--i:0">我是医生，自己的孩子都不敢吃，</p>
+      <p class="dark-line js-box" style="--i:1">怎么让全中国的孩子吃？</p>
+      <p class="tap-hint mt-l hit" data-toggle=".dark-line">点一下，让这句话浮出来</p>
+    </div>
+    <aside class="notes">
+      <p>顾方舟爷爷做了一个决定——他把疫苗喂给了<strong>自己年幼的儿子</strong>。（停顿）</p>
+      <p>就这 1 厘米的小糖丸，他拿自己孩子的健康在试。</p>
+      <p>（点开这句话，全班安静地看。念完停三秒，再往下翻。）</p>
+      <p>（这一页不追问、不讨论。二年级的孩子，安静听懂就够了。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P26 和顾爷爷说句话 ============
+       五句回信：配了音就点一句听一句（audio/P27a–e.wav）。 -->
+  <section class="slide" data-mood="warm" data-title="和顾爷爷说句话">
+    <p class="kicker" style="margin-bottom:4px">第五站 · 说句话</p>
+    <h2 class="h2" style="font-size:42px;margin-bottom:16px">如果顾爷爷就坐在这里，你想对他说什么？</h2>
+    <div class="talk" data-talk>
+      <aside class="talk-left">
+        <figure class="photo-fig" style="margin:0">
+          <div class="photo ratio-4x5 portrait-cut">
+            <div class="ph-fallback">
+              <img class="ph-figure" src="img/顾方舟头像.png" alt="顾方舟"
+                 onerror="this.classList.add('miss')">
+              <span class="ph-note">真实照片放进来就会自动替换：<b>img/gufangzhou.jpg</b></span>
+            </div>
+            <img src="img/gufangzhou.jpg" alt="顾方舟" onerror="this.classList.add('miss')">
+          </div>
+          <figcaption class="img-cap">顾方舟 · 糖丸爷爷</figcaption>
+        </figure>
+        <p class="note-line">他留下过很多话。<br>下面这些回答，都是照着他的话整理的。</p>
+      </aside>
+      <div class="talk-right">
+        <div class="talk-asks">
+          <button class="ask hit" data-ask="sweet" data-audio="audio/P28a.wav"
+                  data-q="糖丸甜吗？"><span class="q">?</span>糖丸甜吗？</button>
+          <button class="ask hit" data-ask="fear" data-audio="audio/P28b.wav"
+                  data-q="做糖丸的时候，您怕不怕？"><span class="q">?</span>做糖丸的时候，您怕不怕？</button>
+          <button class="ask hit" data-ask="needle" data-audio="audio/P28c.wav"
+                  data-q="为什么不打针，要做成糖丸？"><span class="q">?</span>为什么不打针，要做成糖丸？</button>
+          <button class="ask hit" data-ask="giveup" data-audio="audio/P28e.wav"
+                  data-q="您想过放弃吗？遇到过什么困难？"><span class="q">?</span>您想过放弃吗？遇到过什么困难？</button>
+        </div>
+        <div class="talk-stage" style="min-height:460px">
+          <div class="talk-empty" data-empty>点上面任意一句话，看看顾爷爷怎么回答。<br>也可以在下面自己写一句，寄给他。</div>
+          <div data-stream></div>
+        </div>
+        <form class="askme" data-askme>
+          <input type="text" maxlength="30" placeholder="也可以自己写一句，寄给顾爷爷…"
+                 aria-label="你想对顾爷爷说的话">
+          <button type="submit">寄出去</button>
+        </form>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>学了这么多，你有没有话想对顾爷爷说？</p>
+      <p>先看看你们可能想问的这几句。点一句，我来读他的回答。</p>
+      <p>（再点同一句话，这一问一答会收回去；想换个问题，直接点另一句。四句话挑一两句就够，不用都点。）</p>
+      <p>（自由输入）现在请你写一句话，写你想对他说的。写完点“寄出去”。</p>
+      <p>（照实说明一句）屏幕上的回答，是照着顾方舟爷爷留下的访谈和文章整理的，不是他当下说给我们听的——但每一句，他都真的说过类似的话。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P27 布置任务（发往全国 的过渡） ============ -->
+  <section class="slide" data-mood="warm" data-scope data-title="给糖丸画标签">
+    <div class="person person-big">
+      <!-- 人物抠图撑满图像框；底下原来那层手绘稿不要了（2026-10-11） -->
+      <figure class="photo-fig person-fill">
+        <div class="photo ratio-3x4 portrait-cut">
+          <div class="ph-fallback">
+            <img class="ph-figure" src="img/顾方舟形象.png" alt="顾方舟"
+                 onerror="this.classList.add('miss')">
+          </div>
+        </div>
+      </figure>
+      <div>
+        <p class="kicker">第六站 · 给糖丸画标签</p>
+        <div class="say hit" data-toggle=".p28-say" role="button" tabindex="0" aria-label="点一下气泡">
+          <p class="say-line">小研究员们，糖丸合格了！每一颗，还要贴一个小标签。</p>
+          <p class="js-box p28-say mt-s">请小研究员画一条 <strong>4 厘米</strong>的线段，当标签的边线。</p>
+        </div>
+        <p class="tap-hint mt-l hit" data-toggle=".p28-say">点一下气泡，领任务</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>糖丸合格了！每颗糖丸还要贴一个小标签。</p>
+      <p>请小研究员画一条 <strong>4 厘米</strong>的线段，当标签的边线。</p>
+      <p>（让学生复述一遍任务：画多长？4 厘米。用什么画？尺子。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P28 画 4 厘米 ============ -->
+  <section class="slide" data-mood="warm" data-title="画 4 厘米">
+    <p class="kicker">第六站 · 画一画</p>
+    <h2 class="h2">画一条 4 厘米长的线段</h2>
+    <div class="draw-stage" data-draw data-u="150" data-draw-nocandy>
+      <div class="draw-ruler">
+        <!-- 点这支铅笔就开始画（2026-10-11：不再用下面那个按钮） -->
+        <button type="button" class="draw-pencil hit" data-draw-go data-cm="4"
+                aria-label="点一下铅笔，从 0 开始画"
+                onclick="this.closest('.draw-stage').dispatchEvent(new CustomEvent('rcm-draw',{bubbles:true}))"
+                >✏️<span class="pencil-halo" aria-hidden="true"></span></button>
+        <div class="draw-line"></div>
+        <div class="draw-ticks"></div>
+        <div class="candies"></div>
+        <div class="draw-endpoint" data-ep="0"></div>
+        <div class="draw-endpoint" data-ep="4"></div>
+        <div class="draw-end-label" data-ep-label="4">4 厘米</div>
+      </div>
+      <p class="js-box" data-draw-out style="font-size:26px;margin:26px 0 0">
+        两个端点，中间一条线。这条线段长 <b>4 厘米</b>。</p>
+    </div>
+    <aside class="notes">
+      <p>画线段怎么画？对着 0 刻度点一个小圆点（这是第一个端点），从 0 顺着尺子画到 4，在 4 那里再点一个端点，写上“4 厘米”。</p>
+      <p>（点屏幕上那支铅笔，看它一步一步走过去）记住——<strong>两个端点，中间一条线</strong>。</p>
+      <p>请每个同学独立画一条 4 厘米的线段；画完和同桌交换，用尺子量一量对方画对了没有。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P29 糖丸发往全国 ============ -->
+  <section class="slide" data-mood="sepia" data-scope data-title="糖丸发往全国">
+    <p class="kicker">第六站 · 它走了多远</p>
+    <h2 class="h2">这颗小糖丸，坐上火车出发了</h2>
+    <div class="map-wrap mt-m">
+      <figure class="photo-fig">
+        <div class="photo ratio-4x3">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note">真实老照片放进来就会自动替换：<b>img/xiangcun-1960.jpg</b></span>
+          </div>
+          <img src="img/xiangcun-1960.jpg" alt="乡村孩子排队吃糖丸的老照片"
+               onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">老照片 · 村里的孩子排队吃糖丸</figcaption>
+      </figure>
+      <div>
+        <div class="say hit" data-toggle=".p30-say" role="button" tabindex="0" aria-label="点一下">
+          <p class="say-line">1960 年开始，这颗 1 厘米的小糖丸上路了。</p>
+          <p class="js-box p30-say mt-s">装上火车、汽车、马车，走到中国每一个村子。</p>
+        </div>
+        <p class="tap-hint mt-l hit" data-toggle=".p30-say">点一下，看它走了多远</p>
+        <p class="lede mt-m">糖丸发往全国。</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>1960 年开始，这颗 1 厘米的小糖丸，装上火车、汽车、马车，走到中国每一个村子。</p>
+      <p>（点开）看图：这些孩子排着队，张开嘴，就吃到了。</p>
+      <p>它只有 1 厘米，可是它走了很远很远。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P30 好消息 ============ -->
+  <section class="slide" data-mood="triumph" data-scope data-title="2000 年的好消息">
+    <p class="kicker">第七站 · 2000 年的好消息</p>
+    <h2 class="h2">四十年后，一句宣布</h2>
+    <div class="map-wrap mt-m">
+      <figure class="photo-fig">
+        <div class="photo" style="aspect-ratio:689/467">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note">真实照片放进来就会自动替换：<b>img/who-2000.jpg</b></span>
+          </div>
+          <img src="img/who-2000.jpg" alt="中国消灭脊髓灰质炎证实报告签字仪式合影"
+               onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">老照片 · 证实报告签字仪式，2000 年</figcaption>
+      </figure>
+      <div>
+        <div class="say hit" data-toggle=".p31-say" role="button" tabindex="0" aria-label="点一下">
+          <p class="say-line">2000 年，世界卫生组织宣布——</p>
+          <p class="js-box p31-say mt-s">中国被确认为<strong>无脊髓灰质炎国家</strong>。<br>
+            再也没有孩子得这种病了。</p>
+        </div>
+        <p class="tap-hint mt-l hit" data-toggle=".p31-say">点一下，听这句宣布</p>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>2000 年，世界卫生组织宣布——中国，再也没有孩子得小儿麻痹症了。</p>
+      <p>（点开这句话）让孩子安静地听完，再往下走一步。</p>
+      <p>（这一站只有三分钟，语气放慢，不要急着讲下一个年份。）</p>
+    </aside>
+  </section>
+
+  <!-- ============ P31 42 年 ============ -->
+  <section class="slide" data-mood="sepia" data-title="整整 42 年">
+    <p class="kicker">第七站 · 这条路有多长</p>
+    <h2 class="h2">从 1958 年到 2000 年</h2>
+    <div class="tl2" data-timeline data-timeline-auto>
+      <div class="grid5">
+        <div class="node"><span class="dot"></span><span class="yr">1958</span>
+          <span class="tx">开始研究</span></div>
+        <div class="node"><span class="dot"></span><span class="yr">1960</span>
+          <span class="tx">疫苗试制成功</span></div>
+        <div class="node"><span class="dot"></span><span class="yr">1962</span>
+          <span class="tx">做成甜甜的糖丸</span></div>
+        <div class="node"><span class="dot"></span><span class="yr">1978</span>
+          <span class="tx">糖丸送到全国</span></div>
+        <div class="node"><span class="dot"></span><span class="yr">2000</span>
+          <span class="tx">中国消灭了这种病</span></div>
+      </div>
+      <div class="tl-span js-box"><span>整整 42 年</span></div>
+    </div>
+    <p class="tap-hint" style="margin-top:26px">每一年会自己亮起来 —— 也可以点一下某一年</p>
+    <aside class="notes">
+      <p>从顾爷爷 1958 年开始研究，到 2000 年，整整走过了 <strong>42 年</strong>。</p>
+      <p>（年份会自己一年一年亮起来。让学生跟着数：1958、1960、1962、1978、2000。）</p>
+      <p>正是这 1 厘米的小糖丸，守护了中国的孩子。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P32 一生一事 ============ -->
+  <section class="slide" data-mood="sepia" data-scope data-stagger data-title="一生一事">
+    <p class="kicker">第七站 · 一生一事</p>
+    <h2 class="h2" style="font-size:44px">一个人，一辈子，一件事</h2>
+    <div class="grid g3 mt-m" style="gap:28px">
+      <figure class="photo-fig js-box" style="--i:0">
+        <div class="photo ratio-4x3">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note"><b>img/gufangzhou-young.jpg</b></span>
+          </div>
+          <img src="img/gufangzhou-young.jpg" alt="年轻时的顾方舟" onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">年轻的时候 · 他开始做这件事</figcaption>
+      </figure>
+      <figure class="photo-fig js-box" style="--i:1">
+        <div class="photo ratio-4x3">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note"><b>img/gufangzhou-old.jpg</b></span>
+          </div>
+          <img src="img/gufangzhou-old.jpg" alt="白发时的顾方舟抱着孩子" onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">满头白发 · 他还在讲这颗糖丸</figcaption>
+      </figure>
+      <figure class="photo-fig js-box" style="--i:2">
+        <div class="photo ratio-4x3">
+          <div class="ph-fallback">
+            <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+            <span class="ph-note"><b>img/kejiguan-2026.jpg</b></span>
+          </div>
+          <img src="img/kejiguan-2026.jpg" alt="中国科技馆的“一生一事，守护童年”展览"
+               onerror="this.classList.add('miss')">
+        </div>
+        <figcaption class="img-cap">2026 年 · 中国科技馆的展览</figcaption>
+      </figure>
+    </div>
+    <p class="big-q mt-l">一生一事，守护童年。</p>
+    <p class="tap-hint mt-m hit" data-toggle=".js-box">点一下，让三张照片亮起来</p>
+    <aside class="notes">
+      <p>今年是 2026 年，正是顾爷爷诞辰 100 周年。中国科技馆正在办一个展览，名字叫“一生一事，守护童年”。</p>
+      <p>（依次点亮三张照片）年轻的时候他开始做；满头白发他还在讲；到今天，还有人记得、还在展览。</p>
+      <p>顾爷爷一辈子，就做了这一件事。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P33 疫苗在更新换代 ============ -->
+  <section class="slide" data-mood="calm" data-scope data-title="疫苗在更新换代">
+    <p class="kicker">第七站 · 接力棒</p>
+    <h2 class="h2" style="font-size:44px">这之后，疫苗还在一次次更新</h2>
+    <div class="switch mt-m" data-switch>
+      <div class="sw-tabs">
+        <button class="sw-btn" data-sw="inj">灭活疫苗 · 打针</button>
+        <button class="sw-btn" data-sw="drop">口服滴剂</button>
+        <button class="sw-btn" data-sw="mem">纪念页</button>
+      </div>
+      <div class="sw-panels">
+        <div class="sw-panel" data-sw-panel="inj">
+          <figure class="photo-fig">
+            <div class="photo ratio-16x9" style="max-width:900px">
+              <div class="ph-fallback">
+                <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+                <span class="ph-note">真实照片放进来就会自动替换：<b>img/jiezhong-xiandai.jpg</b></span>
+              </div>
+              <img src="img/jiezhong-xiandai.jpg" alt="今天的孩子在接种疫苗"
+                   onerror="this.classList.add('miss')">
+            </div>
+          </figure>
+          <p class="lede mt-m">今天的疫苗更安全了，打一针就够了。</p>
+        </div>
+        <div class="sw-panel" data-sw-panel="drop">
+          <figure class="photo-fig">
+            <div class="photo ratio-16x9" style="max-width:900px">
+              <div class="ph-fallback">
+                <svg class="ph-icon" viewBox="0 0 240 180" aria-hidden="true"><use href="#sym-photo"/></svg>
+                <span class="ph-note">真实照片放进来就会自动替换：<b>img/koufu-diji.jpg</b></span>
+              </div>
+              <img src="img/koufu-diji.jpg" alt="口服滴剂" onerror="this.classList.add('miss')">
+            </div>
+          </figure>
+          <p class="lede mt-m">从糖丸到滴剂，一代代研究者接着做下去。</p>
+        </div>
+        <div class="sw-panel sw-panel-dark" data-sw-panel="mem">
+          <p class="mem-line">2026 年</p>
+          <p class="mem-line2">顾方舟诞辰 100 周年</p>
+          <p class="mem-line3">接力棒，传下来了。</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>这之后，疫苗还在不断更新换代——从糖丸到更安全的灭活疫苗，一代代研究者接棒做了下去。</p>
+      <p>（点三个标签切换）让孩子知道：这件事没有结束，接力棒传下来了。</p>
+    </aside>
+  </section>
+
+  <!-- ============ P34 金句收束 ============ -->
+  <section class="slide dark center tc" data-mood="dark" data-scope data-stagger data-title="金句">
+    <div style="max-width:1600px">
+      <p class="dark-line js-box" style="--i:0">尺子上的 1 厘米，是冷的。</p>
+      <p class="dark-line js-box" style="--i:1">可是有人，把它捂热了。</p>
+      <p class="tap-hint mt-l hit" data-toggle=".dark-line">点一下，让这句话自己出来</p>
+      <p class="tap-hint mt-s hit" data-toggle=".vr-veil">🖐 再点这里，走进顾爷爷的展览</p>
+    </div>
+
+    <!-- VR 实景（第 34 页）：按住画面左右拖动，把这间展馆转一圈 -->
+    <div class="vr-veil" data-vr-stage data-vr-aspect="4">
+      <div class="vr-pano" data-vr-pano>
+        <svg class="vr-art" viewBox="0 0 3600 900" preserveAspectRatio="none" aria-hidden="true"><use href="#vr-hall"/></svg>
+        <svg class="vr-art" viewBox="0 0 3600 900" preserveAspectRatio="none" aria-hidden="true"><use href="#vr-hall"/></svg>
+        <!-- 真 360 实景图放进来就盖住手绘展厅；img/vr-kejiguan.jpg 不存在时这一层是透明的 -->
+        <div class="vr-real" aria-hidden="true"></div>
+      </div>
+      <div class="vr-top">
+        <span class="vr-badge">中国科技馆 · 顾方舟诞辰 100 周年纪念展<br><b>“一生一事，守护童年”</b></span>
+        <span class="vr-compass" data-vr-compass>0°</span>
+      </div>
+      <div class="vr-bottom">
+        <span class="vr-hint">按住画面，左右拖动 —— 转一圈看看（也可以点 ▶）</span>
+        <span class="vr-btns">
+          <button type="button" data-vr-step="-1">◀ 左看</button>
+          <button type="button" data-vr-step="1">右看 ▶</button>
+          <button type="button" class="vr-close" data-toggle=".vr-veil">收起</button>
+        </span>
+      </div>
+    </div>
+    <aside class="notes">
+      <p>（放慢，最后半句要留白。有轻钢琴就轻轻垫着，没有也不要紧。）</p>
+      <p>（想多看一眼：点"走进顾爷爷的展览"，按住画面左右拖，就能把这间展馆转一圈；看完点"收起"。）</p>
+      <p>请大家起立，一起对顾爷爷，也对一代代接棒研究、守护孩子健康的科学家们，道一声——<strong>辛苦了！</strong></p>
+      <p>（等声音落下来，再下课。）</p>
+    </aside>
+  </section>
+
+</div>
+<script src="assets/runtime.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>

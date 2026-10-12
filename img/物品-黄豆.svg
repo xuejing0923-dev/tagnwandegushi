@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="90 90 80 80" width="80" height="80">
+  <!-- 黄豆：长约 0.8 厘米 = 42（比 1 厘米短一点） -->
+  <defs>
+    <radialGradient id="soy" cx="35%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#FDF3D8"/>
+      <stop offset="55%" stop-color="#F0DEAF"/>
+      <stop offset="100%" stop-color="#D8BE85"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="133" cy="136" rx="22" ry="18" fill="rgba(74,58,54,.16)"/>
+  <ellipse cx="130" cy="130" rx="21" ry="17" transform="rotate(-18 130 130)" fill="url(#soy)"/>
+  <path d="M116 126 C122 120 138 118 144 124" stroke="#C6A869" stroke-width="1.6"
+        fill="none" stroke-linecap="round" opacity=".85"/>
+  <ellipse cx="122" cy="122" rx="6" ry="4" transform="rotate(-18 122 122)"
+           fill="#FFFFFF" opacity=".6"/>
+</svg>

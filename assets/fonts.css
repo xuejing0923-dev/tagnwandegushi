@@ -1,0 +1,21 @@
+/* html-ppt :: 本地字体栈（离线可用）
+ *
+ * 原版这里用 7 条 @import 从 Google Fonts 拉字体，有两个坑：
+ *   1. 教室没网时，这些请求会一直挂到超时——课件第一次打开要等好几分钟。
+ *   2. 国内访问 Google Fonts 本身就不稳定。
+ * 所以这里只声明字体栈，优先用系统里已装好的同族字体：
+ * macOS 上中文落到 PingFang SC / Songti SC，Windows 落到微软雅黑 / 宋体。
+ *
+ * 如果上课的电脑能稳定联网、且你想要 Google Fonts 的原始字形，
+ * 把下面被注释的 @import 取消注释即可。
+ */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+*/
