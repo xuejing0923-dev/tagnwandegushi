@@ -360,6 +360,7 @@ h3,.h3{font-size:30px}
 /* 整页照片（P25）：屏幕上不放任何文字 */
 .photo-slide{padding:0}
 .photo-slide .photo-full{position:absolute;inset:0}
+.photo-slide .photo-full>img{object-fit:cover;object-position:center 32%}
 .photo-full>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .photo-full>img.miss{display:none}
 .photo-full .ph-fallback{background:var(--surface-2)}
@@ -450,6 +451,8 @@ h3,.h3{font-size:30px}
 .diag-ruler{display:block;width:100%;height:auto}
 .diag-obj{position:absolute;left:var(--x);width:var(--w);top:var(--y,58%);height:30px;border-radius:6px;
   background:linear-gradient(180deg,#FBE7D6,#F3D6C1);border:1px solid #E0B79B}
+/* 第 19 页那块橡皮：纸底色上米色不够醒目，换成蓝色 */
+.diag-obj.obj-blue{background:linear-gradient(180deg,#D6E8F7,#8FB9DD);border:1px solid #6C97BB}
 .diag-obj-tilt{transform:rotate(-6deg);transform-origin:left center}
 .diag-mark{position:absolute;left:var(--x);width:var(--w);top:6px;height:24px;border-radius:6px;
   display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600}
@@ -460,6 +463,20 @@ h3,.h3{font-size:30px}
 .choice-mini{display:inline-flex;align-items:center;justify-content:center;padding:0;
   width:104px;height:58px;font-size:28px;font-weight:700;line-height:1;box-shadow:none;border-radius:14px}
 .diag-card .js-box{font-size:20px;line-height:1.55;color:var(--text-2)}
+/* 辨一辨（第 21 页）：判完对错，整张卡片跟着变色 —— 量法错的红、量法对的绿。
+   （图一、图二是错的量法 → red；图三是对的 → green；颜色由卡片上的 data-verdict 决定） */
+.diag-card.picked-bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,var(--surface));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--bad) 20%,transparent),var(--shadow)}
+.diag-card.picked-good{border-color:var(--sage);background:color-mix(in srgb,var(--sage) 13%,var(--surface));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--sage) 24%,transparent),var(--shadow)}
+.diag-card.picked-bad .diag-t{color:#963F3F}
+.diag-card.picked-good .diag-t{color:var(--sage-d)}
+/* 辨一辨（第 21 页）：整页文字放大一档（老师 2026-10-12 要求） */
+.judge-page .kicker{font-size:28px}
+.judge-page .diag-t{font-size:32px;margin-bottom:16px}
+.judge-page .diag-card .js-box{font-size:27px;line-height:1.5}
+.judge-page .choice-mini{width:124px;height:70px;font-size:36px}
+.judge-page .diag-obj{height:34px}
 
 /* ============================================================
    6-g 切换（P34）
@@ -673,7 +690,10 @@ h3,.h3{font-size:30px}
 .text-big .tap-hint{font-size:27px}
 
 /* --- 三选一：标题行本身就是大字，不再另起一行 h2 --- */
-.big-head{font-size:64px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 6px}
+/* 注意：这里必须写成 .kicker.big-head（两个 class）。
+   文件后面有一段"整体放大一档"的通用规则 .kicker{font-size:17px}，
+   单个 class 的特异度一样、后写的赢，会把这条 72px 盖回 17px —— 之前就是栽在这儿。 */
+.kicker.big-head{font-size:72px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 6px}
 
 /* 三选一的印章：走不通＝红章，他选了这个＝绿章（原来三张都是同一个陶土红） */
 .choice .stamp.bad{background:var(--bad);color:#FFF4F1}
@@ -751,14 +771,16 @@ svg[data-ruler-zero] .cm-mark{font-size:30px}
 .p7-big .say-line{font-size:54px;line-height:1.42}
 .p7-big .say .js-box{font-size:40px}
 
-/* --- 百宝盒的物品图放大一档（原来 78px 太小） --- */
-.bag-big .item-pic{width:168px;height:168px}
-.bag-big .sort-item{gap:18px;padding:16px 24px}
-.bag-big .sort-item.placed .item-pic{width:112px;height:112px}
-.bag-big .sort-pool{gap:14px;padding:22px}
+/* --- 百宝盒的物品图（第 13 页）：图放大，但框要收着点，
+       原来 168px 的框三排下来比画布高约 60px，上下会被裁掉（老师 2026-10-12 报的问题）。
+       矢量图本身已经裁紧画布，所以框缩到 138px，物品看着还是比原来大两三倍。 --- */
+.bag-big .item-pic{width:138px;height:138px}
+.bag-big .sort-item{gap:18px;padding:14px 24px}
+.bag-big .sort-item.placed .item-pic{width:96px;height:96px}
+.bag-big .sort-pool{gap:12px;padding:18px}
 
 /* --- 身体里的 1 厘米：标题用大字（原来是行小字 + 一个 h2） --- */
-.finger-title{font-size:56px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 8px}
+.kicker.finger-title{font-size:64px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin:0 0 8px}
 .finger-page .finger-cap{font-size:38px;line-height:1.55}
 
 /* ============================================================
@@ -834,6 +856,76 @@ svg[data-ruler-zero] .cm-mark{font-size:30px}
    ============================================================ */
 /* 翻页不再"从右边滑进来"：base.css 里每页默认 translateX(30px)，
    翻页时会有 0.5 秒偏右（投影上很像"整页往右移"）。改成只在原地淡入。 */
+/* 第 2 页：一通"视频来电"（滨滨、江江打来的）—— 单独一页，不再从糖丸那页弹窗 */
+.call-slide{overflow:hidden}
+.call-glow{position:absolute;left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(240,214,160,.22),rgba(240,214,160,0) 62%)}
+.call-screen{position:relative;display:flex;flex-direction:column;align-items:center}
+.call-avatar{position:relative;width:470px;height:262px;display:flex;align-items:center;justify-content:center}
+.call-avatar img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(0,0,0,.5))}
+.call-avatar img.miss{display:none}
+.call-avatar::before{content:"";position:absolute;left:50%;top:50%;width:380px;height:380px;
+  margin:-190px 0 0 -190px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,214,160,.24),rgba(240,214,160,0) 66%);
+  animation:callring 1.9s ease-in-out infinite}
+@keyframes callring{0%,100%{transform:scale(.88);opacity:.45}50%{transform:scale(1.06);opacity:.95}}
+.call-who{font-size:46px;font-weight:700;color:#F6EBD2;margin:14px 0 4px;font-family:var(--font-display)}
+.call-state{font-size:25px;letter-spacing:.1em;color:#C9BBA2;margin:0}
+.call-acts{display:flex;gap:36px;margin-top:26px}
+.call-btn{font-family:var(--font-sans);font-size:27px;font-weight:600;color:#FFF8EF;border:none;
+  border-radius:999px;padding:16px 40px;cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,.32)}
+.call-btn.hang{background:linear-gradient(180deg,#C0533F,#A43C2B)}
+.call-btn.take{background:linear-gradient(180deg,#6C9C55,#4E7B3B);animation:takebreathe 1.8s ease-in-out infinite}
+@keyframes takebreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.call-line{font-size:30px;line-height:1.5;color:#F3E7CE;margin:22px 0 0;max-width:1180px}
+@media print{.call-avatar::before{animation:none}}
+
+/* ============================================================
+   第 36 页：通话结束（背景是那间展馆，滨滨江江站在里面）
+   ============================================================ */
+.bye-slide{overflow:hidden}
+.bye-bg{position:absolute;inset:0;opacity:.55}
+.bye-bg svg{width:100%;height:100%;display:block}
+.bye-veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,10,9,.72) 0%,rgba(12,10,9,.42) 42%,rgba(12,10,9,.86) 100%)}
+.bye-card{position:relative;z-index:2;margin:56px 0 auto;padding:26px 46px 30px;border-radius:24px;
+  background:rgba(22,17,14,.86);border:1px solid rgba(226,201,150,.34);box-shadow:0 20px 46px rgba(0,0,0,.42)}
+.bye-who{font-size:46px;font-weight:700;color:#F6EBD2;margin:0 0 4px;font-family:var(--font-display)}
+.bye-state{font-size:26px;letter-spacing:.08em;color:#C9BBA2;margin:0}
+.bye-line{font-size:30px;line-height:1.6;color:#F3E7CE;margin:16px 0 0;max-width:1120px}
+.bye-card .call-btn{margin-top:24px}
+.bye-pip{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:2;
+  width:620px;height:430px;display:flex;align-items:flex-end;justify-content:center}
+.bye-pip img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))}
+.bye-pip img.miss{display:none}
+.bye-pip .call-badge{left:auto;right:14px;top:auto;bottom:14px;font-size:18px;padding:5px 14px}
+/* 第 3 页：滨滨江江在展馆里挥手（整体轻轻摆动 + 一个挥手的 👋）*/
+.bye-pip.waving img{animation:mascot-wave 1.7s ease-in-out infinite;transform-origin:50% 92%}
+@keyframes mascot-wave{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(1.8deg)}}
+.bye-wave{position:absolute;right:6px;top:-26px;font-size:62px;transform-origin:70% 80%;
+  animation:hand-wave 1.1s ease-in-out infinite}
+@keyframes hand-wave{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+@media print{.bye-pip.waving img,.bye-wave{animation:none}}
+
+/* 第 6 页：那句话改成"滨滨"说的（对话气泡）*/
+.say-bubble{position:relative;display:inline-block;margin-top:10px;padding:24px 30px 22px;
+  border-radius:20px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.say-bubble::after{content:"";position:absolute;left:44px;bottom:-14px;width:26px;height:26px;
+  background:var(--surface);border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  transform:rotate(45deg)}
+.say-name{position:absolute;left:26px;top:-18px;font-size:21px;font-weight:700;color:#FFF6EE;
+  background:var(--rose);border-radius:999px;padding:4px 18px;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+.say-bubble .lede{margin:0}
+
+/* 第 25 页（情感高点 · 照片）：照片改成"挂在纸上的大照片"，别整屏压黑 */
+.photo-slide{padding:56px 72px}
+.photo-slide .photo-full{position:relative;inset:auto;width:100%;height:100%;
+  border-radius:26px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.26)}
+.photo-slide .photo-full>img{object-position:center 42%}
+.photo-slide .veil{inset:56px 72px;border-radius:26px;
+  background:linear-gradient(180deg,rgba(18,16,26,.04),rgba(18,16,26,.22))}
+
 .deck > .slide,
 .deck > .slide.is-prev,
 .deck > .slide.is-active{transform:none}

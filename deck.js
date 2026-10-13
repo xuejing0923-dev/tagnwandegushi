@@ -85,6 +85,29 @@
 
   $$('.flip').forEach(function (f) { on(f, 'click', function () { f.classList.toggle('on'); }); });
 
+  /* 辨一辨（第 21 页）：选了 √ 或 × 之后，整张卡片变色（错的红、对的绿） */
+  document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.closest) return;
+    /* 第 2 页那通"视频来电"：点挂断/接听都收起弹窗；接听顺便把那句话浮出来 */
+    var call = e.target.closest('[data-call-off]');
+    if (call) {
+      var pop = call.closest('.call-pop');
+      if (pop) pop.classList.add('done');
+      var takeSel = call.getAttribute('data-call-take');
+      if (takeSel) {
+        var root = call.closest('[data-scope]') || document;
+        $$(takeSel, root).forEach(function (n) { n.classList.add('on'); });
+      }
+    }
+    var b = e.target.closest('.judge [data-toggle]');
+    if (!b) return;
+    var card = b.closest('.diag-card');
+    var v = card && card.getAttribute('data-verdict');
+    if (!v) return;
+    card.classList.remove('picked-bad', 'picked-good');
+    card.classList.add(v === 'good' ? 'picked-good' : 'picked-bad');
+  });
+
   /* ---------- 3. 尺子（SVG）：认识尺子 / 找出 1 厘米 ---------- */
   function mk(svg, tag, attrs) {
     var n = document.createElementNS(SVGNS, tag);
@@ -861,10 +884,9 @@
     });
 
     /* ---------- 语音对话（2026-10-11 加）----------
-       ① 说：四句回信已经有 audio/P28a–e.wav，点问题就会出声（这条本来就有）。
-       ② 听：浏览器支持语音识别时，给出一个麦克风按钮，学生说完自动变成提问。
-          注意：Chrome 的语音识别要把麦克风声音传到网上，教室里没网或用不了会自动退成打字，
-          不影响上课（按钮会变成"用不了"）。 */
+       2026-10-12 老师要求：去掉语音识别（麦克风按钮），改成直接在输入框里打字对话。
+       想恢复：把下面 MIC_ON 改成 true 就行（代码还留着，没删）。 */
+    var MIC_ON = false;
     function speakLocal(text) {
       try {
         if (!AUDIO_ON) return;                                  /* 配音已关闭 */
@@ -880,7 +902,7 @@
     }
 
     var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SR && form && input) {
+    if (MIC_ON && SR && form && input) {
       var mic = document.createElement('button');
       mic.type = 'button';
       mic.className = 'mic-btn';
@@ -1134,6 +1156,62 @@
     }, 900);
   }
 
+  /* ---------- 10-a. 第 2 页：点"接听" → 停铃声、显示"通话中"，随后自动翻到第 3 页（展馆里）---------- */
+  document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.closest || !e.target.closest('[data-call-go]')) return;
+    setTimeout(function () {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    }, 800);
+  });
+
+  /* ---------- 10-b. 第 2 页的来电铃声：翻到这一页就响，按接听/挂断停 ---------- */
+  (function ringtone() {
+    var call = document.querySelector('.call-slide');
+    var au = call && call.querySelector('[data-ring]');
+    if (!call || !au) return;
+    var dismissed = false, lastActive = false, retryArmed = false;
+    var isActive = function () { return call.classList.contains('is-active'); };
+    var stop = function () { try { au.pause(); au.currentTime = 0; } catch (e) {} };
+    var ring = function () {
+      if (!isActive() || dismissed) return;
+      au.currentTime = 0;
+      var p = au.play();
+      /* 浏览器要"用户手势"才让出声：第一次没放出来，就等他下一次按键/点鼠标再补一次 */
+      if (p && p.catch) p.catch(function () { armRetry(); });
+    };
+    function armRetry() {
+      if (retryArmed) return;
+      retryArmed = true;
+      var once = function (ev) {
+        if (ev.target && ev.target.closest && ev.target.closest('[data-ring-off]')) return;
+        document.removeEventListener('keydown', once, true);
+        document.removeEventListener('pointerdown', once, true);
+        retryArmed = false;
+        ring();
+      };
+      document.addEventListener('keydown', once, true);
+      document.addEventListener('pointerdown', once, true);
+    }
+    /* 翻页时看这一页是不是当前页（回到这一页会重新响） */
+    var mo = new MutationObserver(function () {
+      var act = isActive();
+      if (act && !lastActive) dismissed = false;
+      lastActive = act;
+      if (act && !dismissed) { if (au.paused) ring(); }
+      else stop();
+    });
+    $$('.deck > .slide').forEach(function (s) {
+      mo.observe(s, { attributes: true, attributeFilter: ['class'] });
+    });
+    /* 按接听/挂断 → 停止铃声 */
+    document.addEventListener('click', function (e) {
+      if (e.target && e.target.closest && e.target.closest('[data-ring-off]')) {
+        dismissed = true;
+        stop();
+      }
+    });
+  })();
+
   /* ---------- 11. VR 实景（第 34 页）：按住画面拖，把展馆转一圈 ---------- */
   $$('[data-vr-stage]').forEach(function (stage) {
     var pano = $('[data-vr-pano]', stage);
@@ -1346,6 +1424,44 @@
           }
         });
         lines.push('溢出的页=' + (over.length ? over.join('、') : '无'));
+        /* 上面那条只查"向下溢出"；居中排版的页上下都会被裁，scrollHeight 却看不出来。
+           所以这里再量一次：把所有可见子元素的实际范围并起来，跟页面框比。 */
+        var bad = [];
+        var sc0 = parseFloat(getComputedStyle(d).getPropertyValue('--deck-scale')) || 1;
+        $$('.deck > .slide').forEach(function (s, i) {
+          var sr = s.getBoundingClientRect();
+          var top = Infinity, bottom = -Infinity, sr0 = 0;
+          $$(':scope > *', s).forEach(function (c) {
+            var cs = getComputedStyle(c);
+            if (cs.display === 'none' || cs.visibility === 'hidden') return;
+            var r = c.getBoundingClientRect();
+            if (!r.width || !r.height) return;
+            sr0++;
+            top = Math.min(top, r.top); bottom = Math.max(bottom, r.bottom);
+          });
+          if (!sr0) return;
+          var up = Math.round((top - sr.top) / sc0);
+          var down = Math.round((bottom - sr.bottom) / sc0);
+          if (up < -2 || down > 2) bad.push('P' + (i + 1) + '(上-' + Math.abs(up) + ' 下+' + down + ')');
+        });
+        lines.push('被裁的页=' + (bad.length ? bad.join('、') : '无'));
+        /* 第 21 页辨一辨：点一下 √ / ×，整张卡片应当变色；顺便确认麦克风按钮已经没了 */
+        var jud = document.querySelector('.deck .judge [data-toggle]');
+        if (jud) {
+          jud.click();
+          var jc = jud.closest('.diag-card');
+          lines.push('辨一辨：点一下「' + jud.textContent.trim() + '」→ 卡片 class「' +
+            (jc ? jc.className : '?') + '」｜语音识别按钮 ' +
+            document.querySelectorAll('.mic-btn').length + ' 个');
+        }
+        /* 字号体检：几条"应该很大"的标题，防止再被后面的通用规则盖小 */
+        var fsOf = function (sel) {
+          var n = document.querySelector(sel);
+          return n ? Math.round(parseFloat(getComputedStyle(n).fontSize)) + 'px' : '（没有）';
+        };
+        lines.push('字号：P5 大标题 ' + fsOf('.big-head') + '｜P14 手指页标题 ' + fsOf('.finger-title') +
+          '｜封面课题 ' + fsOf('.cover .h1') + '｜金句 ' + fsOf('.dark-line') +
+          '｜第 5 页卡片小字 ' + fsOf('.choice p'));
       }
       box.textContent = lines.join('\n');
       document.body.appendChild(box);
